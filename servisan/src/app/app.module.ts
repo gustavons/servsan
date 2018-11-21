@@ -12,6 +12,20 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
+ 
+
+import {AngularFireModule, FirebaseAppConfig} from '@angular/fire'
+
+const FirebaseAppConfig: FirebaseAppConfig = {
+    apiKey: "AIzaSyDYlL3HtkQ2K88aoxqJQy42PjsKrDfYHvA",
+    authDomain: "servsan-c238a.firebaseapp.com",
+    databaseURL: "https://servsan-c238a.firebaseio.com",
+    projectId: "servsan-c238a",
+    storageBucket: "servsan-c238a.appspot.com",
+    messagingSenderId: "236703174542"
+  };
+
+
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -49,7 +63,9 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(FirebaseAppConfig)
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
