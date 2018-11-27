@@ -1,30 +1,31 @@
-
-
-import { Todo, TodoService } from './../services/todo.service';
 import { Component, OnInit } from '@angular/core';
+import { Todo, TodoService } from '../services/todo.service';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, LoadingController } from '@ionic/angular';
- 
+import { NavController, LoadingController, ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-servico',
-  templateUrl: './servico.page.html',
-  styleUrls: ['./servico.page.scss'],
+  selector: 'app-alterar-servico',
+  templateUrl: './alterar-servico.page.html',
+  styleUrls: ['./alterar-servico.page.scss'],
+  
 })
-export class ServicoPage implements OnInit {
- 
+export class AlterarServicoPage implements OnInit {
+
   todo: Todo = {
-    task: 'test',
+    Titulo: '',
+    Descricao: '',  
     createdAt: new Date().getTime(),
-    priority: 2
-  };
+  }; 
  
   todoId = null;
  
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute,
+     private nav: NavController, private todoService: TodoService, 
+     private loadingController: LoadingController) { }
  
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
+    console.log(this.todoId);
     if (this.todoId)  {
       this.loadTodo();
     }
@@ -45,19 +46,19 @@ export class ServicoPage implements OnInit {
   async saveTodo() {
  
     const loading = await this.loadingController.create({
-      message: 'Saving Todo..'
+      message: 'Salvando Serviço...'
     });
     await loading.present();
  
     if (this.todoId) {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         loading.dismiss();
-        this.nav.goBack(true);
+        this.nav.navigateForward("\home", true);
       });
     } else {
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
-        this.nav.goBack(true);
+        this.nav.navigateForward("\home", true);
       });
     }
   }

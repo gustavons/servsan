@@ -10,11 +10,11 @@
 <ion-content padding>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Task" [(ngModel)]="todo.task"></ion-input>
+      <ion-input required type="text" placeholder="Titulo" [(ngModel)]="todo.Titulo"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input required type="number" placeholder="Priority" [(ngModel)]="todo.priority"></ion-input>
-    </ion-item>
+      <ion-input required type="text" placeholder="Descrição" [(ngModel)]="todo.Descricao"></ion-input>
+    </ion-item> 
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+  <ion-button expand="full" (click)="saveTodo()" routerLink="/servico">Save</ion-button>
 </ion-content>

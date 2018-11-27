@@ -5,8 +5,8 @@ import { map } from 'rxjs/operators';
  
 export interface Todo {
   id?: string;
-  task: string;
-  priority: number;
+  Titulo: string;
+  Descricao:string;
   createdAt: number;
 }
  
@@ -19,7 +19,7 @@ export class TodoService {
   private todos: Observable<Todo[]>;
  
   constructor(db: AngularFirestore) {
-    this.todosCollection = db.collection<Todo>('todos');
+    this.todosCollection = db.collection<Todo>('servico');
  
     this.todos = this.todosCollection.snapshotChanges().pipe(
       map(actions => {

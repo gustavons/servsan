@@ -4,8 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'servico', loadChildren: './servico/servico.module#ServicoPageModule' },
-  // { path: 'servico/:id', loadChildren: './servico/servico.module#ServicoPageModule' },
+  { path: 'servico', loadChildren: './cadastrar_servico/servico.module#ServicoPageModule' },
+  { path: 'alterar-servico/:id', loadChildren: './alterar-servico/alterar-servico.module#AlterarServicoPageModule' },
+  { path: 'servico/:id', loadChildren: './cadastrar_servico/servico.module#ServicoPageModule' },
 ];
 
 @NgModule({
