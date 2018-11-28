@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AlterarServicoPageModule } from './alterar-servico/alterar-servico.module';
+import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-servico.module';
 
 
 

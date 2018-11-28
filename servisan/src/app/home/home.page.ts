@@ -1,7 +1,7 @@
+import { AlterarServicoPage } from './../servico/alterar-servico/alterar-servico.page';
+import { Todo, TodoService  } from './../servico/services/todo.service';
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { Todo, TodoService } from '../services/todo.service';
-import { AlterarServicoPage } from '../alterar-servico/alterar-servico.page';
  
 @Component({
   selector: 'app-home',
