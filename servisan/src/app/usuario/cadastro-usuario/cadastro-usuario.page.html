@@ -1,9 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cadastro_usuario</ion-title>
+  <ion-toolbar color="primary" >
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/cadastro_usuario"></ion-back-button>
+        </ion-buttons>      
+    <ion-title >
+      cadastro_usuario
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+<h1> Tela de Cadastro </h1>
+<ion-list lines="full">
 
+    <ion-item>
+        <ion-input required type="text" placeholder="Titulo" [(ngModel)]="todo.Titulo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input required type="text" placeholder="Descrição" [(ngModel)]="todo.Descricao"></ion-input>
+      </ion-item> 
+    </ion-list>
+    <ion-button expand="full" (click)="saveTodo()" routerLink="/cadastro_usuario">Save</ion-button>
 </ion-content>
