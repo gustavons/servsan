@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'servico', loadChildren: './servico/cadastrar_servico/servico.module#ServicoPageModule' },
   { path: 'alterar-servico/:id', loadChildren: './servico/alterar-servico/alterar-servico.module#AlterarServicoPageModule' },
   { path: 'servico/:id', loadChildren: './servico/cadastrar_servico/servico.module#ServicoPageModule' },
+  { path: 'cadastro_usuario', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
 ];
 
 @NgModule({
