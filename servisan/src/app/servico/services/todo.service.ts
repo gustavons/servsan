@@ -5,8 +5,8 @@ import { map } from 'rxjs/operators';
  
 export interface Todo {
   id?: string;
-  Titulo: string;
-  Descricao:string;
+  // fotos: string;
+  descricao:string;
   createdAt: number;
 }
  

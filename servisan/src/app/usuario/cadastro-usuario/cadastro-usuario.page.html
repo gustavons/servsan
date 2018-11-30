@@ -9,16 +9,61 @@
   </ion-toolbar>
 </ion-header>
 
+
+<ion-content padding="true" class="has-header">
+  <form id="cadastro-form3" class="list">
+    <label class="item item-input" id="cadastro-input6">
+      <span class="input-label">Nome Completo</span>
+      <ion-item>
+        <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.Nome"></ion-input>
+      </ion-item>    
+    </label>
+    <label class="item item-input" id="cadastro-input7">
+      <span class="input-label">Data de Nascimento</span>
+      <input type="date" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input8">
+      <span class="input-label">CPF</span>
+      <input type="number" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input20">
+      <span class="input-label">Celular</span>
+      <input type="tel" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input9">
+      <span class="input-label">Endereço</span>
+      <input type="text" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input10">
+      <span class="input-label">Cep</span>
+      <input type="number" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input11">
+      <span class="input-label">E-mail</span>
+      <input type="email" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input12">
+      <span class="input-label">Senha </span>
+      <input type="password" placeholder="">
+    </label>
+    <label class="item item-input" id="cadastro-input13">
+      <span class="input-label">Confirmar senha</span>
+      <input type="password" placeholder="">
+    </label>
+    <a ui-sref="servSan()" id="cadastro-button12" class="button button-positive button-block icon ion-android-done">Cadastrar</a>
+  </form>
+<!-- </ion-content>
+
 <ion-content padding>
 <h1> Tela de Cadastro </h1>
-<ion-list lines="full">
+  <ion-list lines="full">
 
-    <ion-item>
+      <ion-item>
         <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.Nome"></ion-input>
       </ion-item>
       <ion-item>
         <ion-input required type="text" placeholder="CPF" [(ngModel)]="cad.CPF"></ion-input>
       </ion-item> 
-    </ion-list>
+  </ion-list> -->
     <ion-button expand="full" (click)="saveCad()" routerLink="/cadastro_usuario">Salvar</ion-button>
 </ion-content>
