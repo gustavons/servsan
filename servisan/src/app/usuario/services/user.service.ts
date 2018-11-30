@@ -26,7 +26,7 @@ export class CadService {
   private cads: Observable<Cad[]>;
  
   constructor(db: AngularFirestore) {
-    this.cadsCollection = db.collection<Cad>('Cadastro');
+    this.cadsCollection = db.collection<Cad>('cadastro');
  
     this.cads = this.cadsCollection.snapshotChanges().pipe(
       map(actions => {

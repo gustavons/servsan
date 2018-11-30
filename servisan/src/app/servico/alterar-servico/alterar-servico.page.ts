@@ -12,20 +12,17 @@ import { NavController, LoadingController, ModalController } from '@ionic/angula
 export class AlterarServicoPage implements OnInit {
 
   todo: Todo = {
-    Titulo: '',
-    Descricao: '',  
+    // fotos: '',
+    descricao: '',  
     createdAt: new Date().getTime(),
   }; 
  
   todoId = null;
  
-  constructor(private route: ActivatedRoute,
-     private nav: NavController, private todoService: TodoService, 
-     private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
  
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
-    console.log(this.todoId);
     if (this.todoId)  {
       this.loadTodo();
     }
@@ -53,14 +50,15 @@ export class AlterarServicoPage implements OnInit {
     if (this.todoId) {
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         loading.dismiss();
-        this.nav.navigateForward("\home", true);
+        this.nav.navigateBack("\home", true);
       });
     } else {
       this.todoService.addTodo(this.todo).then(() => {
         loading.dismiss();
-        this.nav.navigateForward("\home", true);
+        this.nav.navigateBack("\home", true);
       });
     }
   }
+ 
  
 }

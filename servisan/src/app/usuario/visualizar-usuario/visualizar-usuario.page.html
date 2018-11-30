@@ -10,7 +10,7 @@
   <h1>Coisas a serem aparecidas </h1>
   <ion-list>
 
-    <ng-container *ngIf="!todos || todos.length == 0">
+    <ng-container *ngIf="!usuarios || usuarios.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text></ion-skeleton-text>
         <p>
@@ -19,35 +19,30 @@
       </div>
     </ng-container>
 
-    <ion-item-sliding *ngFor="let item of todos">
-      <ion-item lines="inset" button [routerLink]="['/alterar-servico', item.id]">
+    <ion-item-sliding *ngFor="let user of usuarios">
+      <ion-item lines="inset" button [routerLink]="['/cadastro_usuario', user.id]">
         <ion-label>
-          {{ item.Titulo }}
-          <p></p>
-          <p>{{ item.createdAt | date:'short' }}</p>
+          {{ user.nome }}
+          <p>{{user.cpf}}</p>
+          <!-- <p>{{ item.createdAt | date:'short' }}</p> -->
         </ion-label>
-        <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
+       
       </ion-item>
       
       <ion-item-options side="end">
-        <ion-item-option (click)="remove(item)" color="secondary">
+        <ion-item-option (click)="remove(user)" color="secondary">
           Excluir
           <ion-icon name="trash" slot="end"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
   </ion-list>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/servico" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
   <ion-fab vertical="bottom" >
-    <ion-fab-button routerLink="/visualizar_usuario" routerDirection="forward">
+    <ion-fab-button routerLink="/cadastro_usuario" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab>  
+
+  
 
 </ion-content>

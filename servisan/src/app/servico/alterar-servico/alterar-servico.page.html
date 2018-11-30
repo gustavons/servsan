@@ -10,11 +10,12 @@
 <ion-content padding>
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Titulo" [(ngModel)]="todo.Titulo"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-input required type="text" placeholder="Descrição" [(ngModel)]="todo.Descricao"></ion-input>
-    </ion-item> 
+    </ion-item>
+    <!-- Ainda falta fazer o carregamento de fotos -->
+    <ion-item class="item-thumbnail-left" id="oferecerServiOs-list-item24">
+      <h2>Carregar fotos</h2>
+    </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+  <ion-button expand="full" (click)="saveTodo()" routerLink="/servico" class="button button-positive button-block">Salvar</ion-button>
 </ion-content>
