@@ -11,46 +11,61 @@
 
 
 <ion-content padding="true" class="has-header">
-  <form id="cadastro-form3" class="list">
-    <label class="item item-input" id="cadastro-input6">
+  <form id="cadastro-user" class="list">
+    <label class="item item-input" id="cadastro-nome">
       <span class="input-label">Nome Completo</span>
       <ion-item>
-        <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.Nome"></ion-input>
+        <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.nome"></ion-input>
       </ion-item>    
     </label>
-    <label class="item item-input" id="cadastro-input7">
+    <label class="item item-input" id="cadastro-nasci">
       <span class="input-label">Data de Nascimento</span>
-      <input type="date" placeholder="">
+      <ion-item>
+        <ion-input required type="date" placeholder="Data de Nascimento " [(ngModel)]="cad.nasci"></ion-input>
+      </ion-item> 
     </label>
-    <label class="item item-input" id="cadastro-input8">
+    <label class="item item-input" id="cadastro-cpf">
       <span class="input-label">CPF</span>
-      <input type="number" placeholder="">
+      <ion-item>
+        <ion-input required type="text" placeholder="CPF" [(ngModel)]="cad.cpf"></ion-input>
+      </ion-item> 
     </label>
-    <label class="item item-input" id="cadastro-input20">
-      <span class="input-label">Celular</span>
-      <input type="tel" placeholder="">
+    <label class="item item-input" id="cadastro-celular">
+      <span class="input-label">Número do celular</span>
+      <ion-item>
+        <ion-input required type="text" placeholder="Número do celular" [(ngModel)]="cad.cel"></ion-input>
+      </ion-item> 
     </label>
-    <label class="item item-input" id="cadastro-input9">
+    <label class="item item-input" id="cadastro-endereco">
       <span class="input-label">Endereço</span>
-      <input type="text" placeholder="">
+      <ion-item>
+        <ion-input required type="text" placeholder="endereço" [(ngModel)]="cad.endereco"></ion-input>
+      </ion-item>
     </label>
-    <label class="item item-input" id="cadastro-input10">
+    <label class="item item-input" id="cadastro-cep">
       <span class="input-label">Cep</span>
-      <input type="number" placeholder="">
+      <ion-item>
+        <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.cep"></ion-input>
+      </ion-item>
     </label>
-    <label class="item item-input" id="cadastro-input11">
+    <label class="item item-input" id="cadastro-email">
       <span class="input-label">E-mail</span>
-      <input type="email" placeholder="">
+      <ion-item>
+        <ion-input required type="email" placeholder="Email" [(ngModel)]="cad.email"></ion-input>
+      </ion-item>
     </label>
-    <label class="item item-input" id="cadastro-input12">
+    <label class="item item-input" id="cadastro-senha">
       <span class="input-label">Senha </span>
-      <input type="password" placeholder="">
+      <ion-item>
+        <ion-input required type="password" placeholder="Senha" [(ngModel)]="cad.senha"></ion-input>
+      </ion-item>
     </label>
-    <label class="item item-input" id="cadastro-input13">
+    <label class="item item-input" id="cadastro-confsenha">
       <span class="input-label">Confirmar senha</span>
-      <input type="password" placeholder="">
+      <ion-item>
+        <ion-input required type="password" placeholder="Confrimar Senha" ></ion-input>
+      </ion-item>
     </label>
-    <a ui-sref="servSan()" id="cadastro-button12" class="button button-positive button-block icon ion-android-done">Cadastrar</a>
   </form>
 <!-- </ion-content>
 
