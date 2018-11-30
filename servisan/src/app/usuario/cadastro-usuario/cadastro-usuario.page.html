@@ -4,7 +4,7 @@
           <ion-back-button defaultHref="/cadastro_usuario"></ion-back-button>
         </ion-buttons>      
     <ion-title >
-      cadastro_usuario
+      Cadastro de usuário
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,11 +14,11 @@
 <ion-list lines="full">
 
     <ion-item>
-        <ion-input required type="text" placeholder="Titulo" [(ngModel)]="todo.Titulo"></ion-input>
+        <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.Nome"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input required type="text" placeholder="Descrição" [(ngModel)]="todo.Descricao"></ion-input>
+        <ion-input required type="text" placeholder="CPF" [(ngModel)]="cad.CPF"></ion-input>
       </ion-item> 
     </ion-list>
-    <ion-button expand="full" (click)="saveTodo()" routerLink="/cadastro_usuario">Save</ion-button>
+    <ion-button expand="full" (click)="saveCad()" routerLink="/cadastro_usuario">Salvar</ion-button>
 </ion-content>
