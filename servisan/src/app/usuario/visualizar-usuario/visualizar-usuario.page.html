@@ -20,7 +20,7 @@
     </ng-container>
 
     <ion-item-sliding *ngFor="let user of usuarios">
-      <ion-item lines="inset" button [routerLink]="['/cadastro_usuario', user.id]">
+      <ion-item lines="inset" button [routerLink]="['/alterar-usuario', user.id]">
         <ion-label>
           {{ user.nome }}
           <p>{{user.cpf}}</p>
