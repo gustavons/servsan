@@ -66,5 +66,5 @@ export class AlterarUsuarioPage implements OnInit {
       });
     }
   }
-  }
+}
  

@@ -22,4 +22,4 @@ const routes: Routes = [
   ],
   declarations: [AlterarUsuarioPage]
 })
-export class CadastroUsuarioPageModule {}
+export class AlterarUsuarioPageModule {}
