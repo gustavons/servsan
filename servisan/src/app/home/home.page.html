@@ -5,11 +5,11 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
- 
+
 <ion-content padding>
   <h1>Coisas a serem aparecidas </h1>
   <ion-list>
-    
+
     <ng-container *ngIf="!todos || todos.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text></ion-skeleton-text>
@@ -18,7 +18,7 @@
         </p>
       </div>
     </ng-container>
- 
+
     <ion-item-sliding *ngFor="let item of todos">
       <ion-item lines="inset" button [routerLink]="['/alterar-servico', item.id]">
         <ion-label>
@@ -28,7 +28,16 @@
         </ion-label>
         <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
       </ion-item>
- 
+
+
+
+      {{ item.Titulo }}
+      <p></p>
+      <p>{{ item.createdAt | date:'short' }}</p>
+      <!--</ion-label>-->
+      <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
+      <!--</ion-item>-->
+
       <ion-item-options side="end">
         <ion-item-option (click)="remove(item)" color="secondary">
           Excluir
@@ -36,12 +45,12 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
- 
+
   </ion-list>
- 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/servico" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>
