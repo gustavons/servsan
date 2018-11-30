@@ -13,8 +13,16 @@ export class CadastroUsuarioPage implements OnInit {
 
   cad: Cad = {
 
-  Nome: '',
-  CPF: '',  
+  nome: '',
+  cpf: '', 
+  nasci: '',
+  cel: '',
+  endereco: '',
+  cep: '',
+  email:'',
+  senha:'',
+
+
   createdAt: new Date().getTime(),
 }; 
 

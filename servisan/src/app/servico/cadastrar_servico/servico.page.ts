@@ -14,8 +14,8 @@ import { NavController, LoadingController } from '@ionic/angular';
 export class ServicoPage implements OnInit {
  
   todo: Todo = {
-    Titulo: '',
-    Descricao: '',  
+    // fotos: '',
+    descricao: '',  
     createdAt: new Date().getTime(),
   }; 
  

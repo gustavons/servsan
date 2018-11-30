@@ -5,10 +5,17 @@ import { map } from 'rxjs/operators';
  
 export interface Cad {
   id?: string;
-  Nome: string;
-  CPF: string;
-  createdAt: number;
-}
+  nome: '',
+  cpf: '', 
+  nasci: '',
+  cel: '',
+  endereco: '',
+  cep: '',
+  email:'',
+  senha:'',
+  createdAt: number,
+}; 
+
  
 @Injectable({
   providedIn: 'root'

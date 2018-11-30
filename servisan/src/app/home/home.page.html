@@ -28,16 +28,7 @@
         </ion-label>
         <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
       </ion-item>
-
-
-
-      {{ item.Titulo }}
-      <p></p>
-      <p>{{ item.createdAt | date:'short' }}</p>
-      <!--</ion-label>-->
-      <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
-      <!--</ion-item>-->
-
+      
       <ion-item-options side="end">
         <ion-item-option (click)="remove(item)" color="secondary">
           Excluir
@@ -53,3 +44,10 @@
     </ion-fab-button>
   </ion-fab>
 
+  <ion-fab vertical="bottom" >
+    <ion-fab-button routerLink="/cadastro_usuario" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
