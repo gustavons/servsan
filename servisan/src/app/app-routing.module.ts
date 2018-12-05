@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'cadastro_usuario', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
   { path: 'visualizar_usuario', loadChildren: './usuario/visualizar-usuario/visualizar-usuario.module#VisualizarUsuarioPageModule' },
   { path: 'buscar-servico', loadChildren: './servico/buscar-servico/buscar-servico.module#BuscarServicoPageModule' },
+  { path: 'alterar-usuario/:id', loadChildren: './usuario/alterar-usuario/alterar-usuario.module#AlterarUsuarioPageModule' },
 ];
 
 @NgModule({

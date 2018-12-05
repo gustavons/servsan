@@ -8,6 +8,12 @@
 
 <ion-content padding>
   <h1>Coisas a serem aparecidas </h1>
+  <!-- <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
   <ion-list>
 
     <ng-container *ngIf="!todos || todos.length == 0">
@@ -37,7 +43,10 @@
       </ion-item-options>
     </ion-item-sliding>
 
-  </ion-list>
+  </ion-list> -->
+
+  <button ion-button round routerLink="/buscar-servico" routerDirection="forward">Buscar serviços</button>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/servico" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
