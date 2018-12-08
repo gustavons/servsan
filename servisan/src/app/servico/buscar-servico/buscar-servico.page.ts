@@ -20,9 +20,15 @@ export class BuscarServicoPage implements OnInit {
     });
   }
 
+  atualizar(){
+    this.todoService.getTodos().subscribe(res => {
+      this.todos = res;
+    });
+  }
+
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.ngOnInit();
+    this.atualizar();
 
     // set val to the value of the searchbar
     const val = ev.target.value;
@@ -30,6 +36,7 @@ export class BuscarServicoPage implements OnInit {
     // if the value is an empty string don't filter the items
     if (val.length >0) {
       console.log("Entrou");
+      console.log(this.todos[0].descricao);
       this.todos =  this.todos.filter((v) => {
         if(v.descricao && val) {
           if (v.descricao.toLowerCase().indexOf(val.toLowerCase()) > -1) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComponentFixture } from '@angular/core/testing';
 import { Cad, CadService } from './../services/user.service';
-import { NavController, LoadingController} from '@ionic/angular';
+import { NavController, LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-alterar-usuario',

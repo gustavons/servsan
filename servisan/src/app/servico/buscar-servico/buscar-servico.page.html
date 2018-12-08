@@ -24,9 +24,9 @@
     <ion-item-sliding *ngFor="let item of todos">
       <ion-item lines="inset" button [routerLink]="['/alterar-servico', item.id]">
         
-          <p>{{ item.descricao }}</p>
+        <p>{{ item.descricao }}</p>
           
-          <p>{{ item.createdAt | date:'short' }}</p>
+        <ion-note color="primary">{{ item.createdAt | date:'short' }}</ion-note>
         <ion-note slot="end" color="primary">{{ item.Descricao }}</ion-note>
       </ion-item>
       
