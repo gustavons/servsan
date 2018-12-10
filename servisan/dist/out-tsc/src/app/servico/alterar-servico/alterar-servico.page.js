@@ -53,15 +53,14 @@ var AlterarServicoPage = /** @class */ (function () {
         this.todoService = todoService;
         this.loadingController = loadingController;
         this.todo = {
-            Titulo: '',
-            Descricao: '',
+            // fotos: '',
+            descricao: '',
             createdAt: new Date().getTime(),
         };
         this.todoId = null;
     }
     AlterarServicoPage.prototype.ngOnInit = function () {
         this.todoId = this.route.snapshot.params['id'];
-        console.log(this.todoId);
         if (this.todoId) {
             this.loadTodo();
         }
@@ -106,13 +105,13 @@ var AlterarServicoPage = /** @class */ (function () {
                         if (this.todoId) {
                             this.todoService.updateTodo(this.todo, this.todoId).then(function () {
                                 loading.dismiss();
-                                _this.nav.navigateForward("\home", true);
+                                _this.nav.navigateBack("\home", true);
                             });
                         }
                         else {
                             this.todoService.addTodo(this.todo).then(function () {
                                 loading.dismiss();
-                                _this.nav.navigateForward("\home", true);
+                                _this.nav.navigateBack("\home", true);
                             });
                         }
                         return [2 /*return*/];
@@ -126,9 +125,7 @@ var AlterarServicoPage = /** @class */ (function () {
             templateUrl: './alterar-servico.page.html',
             styleUrls: ['./alterar-servico.page.scss'],
         }),
-        __metadata("design:paramtypes", [ActivatedRoute,
-            NavController, TodoService,
-            LoadingController])
+        __metadata("design:paramtypes", [ActivatedRoute, NavController, TodoService, LoadingController])
     ], AlterarServicoPage);
     return AlterarServicoPage;
 }());

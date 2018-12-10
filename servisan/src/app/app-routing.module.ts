@@ -9,13 +9,10 @@ const routes: Routes = [
   { path: 'cadastro_usuario', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
   { path: 'visualizar_usuario', loadChildren: './usuario/visualizar-usuario/visualizar-usuario.module#VisualizarUsuarioPageModule' },
   { path: 'alterar-usuario/:id', loadChildren: './usuario/alterar-usuario/alterar-usuario.module#AlterarUsuarioPageModule' },
-<<<<<<< HEAD
   { path: 'cadastrar-demanda', loadChildren: './demanda/cadastrar-demanda/cadastrar-demanda.module#CadastrarDemandaPageModule' },
   { path: 'alterar-demanda', loadChildren: './demanda/alterar-demanda/alterar-demanda.module#AlterarDemandaPageModule' },
   { path: 'visualizar-demanda', loadChildren: './demanda/visualizar-demanda/visualizar-demanda.module#VisualizarDemandaPageModule' },
-=======
   { path: 'buscar-servico', loadChildren: './servico/buscar-servico/buscar-servico.module#BuscarServicoPageModule' },
->>>>>>> 67d014696788b31107a6036a09e37654f193bd63
 ];
 
 @NgModule({

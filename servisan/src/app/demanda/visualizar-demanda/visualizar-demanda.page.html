@@ -21,6 +21,7 @@
         <ion-item lines="inset" button [routerLink]="['/alterar-demanda', dem.id]">
           <ion-label>
             {{ user.dem }}
+    
             
             <!-- <p>{{ item.createdAt | date:'short' }}</p> -->
           </ion-label>
@@ -35,12 +36,12 @@
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
-    <!-- <ion-fab vertical="bottom" >
-      <ion-fab-button routerLink="/cadastro_usuario" routerDirection="forward">
+    <ion-fab vertical="bottom" >
+      <ion-fab-button routerLink="/cadastrar_dema" routerDirection="forward">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-    </ion-fab>   -->
-    <button ion-button full routerLink="/cadastro_demanda" routerDirection="forward">cadastro_demanda</button>  
+    </ion-fab>
+   
   
   </ion-content>
   

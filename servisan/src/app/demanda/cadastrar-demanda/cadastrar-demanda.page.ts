@@ -1,5 +1,4 @@
 import { Dem, DemserviceService } from './../services/demservice.service';
-import { ComponentFixture } from '@angular/core/testing';
 import { NavController, LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +18,7 @@ export class CadastrarDemandaPage implements OnInit {
   };
   demId = null;
 
-  constructor(private route: ActivatedRoute, private nav: NavController, private demService: DemserviceService,private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private demserviceService: DemserviceService,private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.demId = this.route.snapshot.params['id'];
@@ -35,7 +34,7 @@ async loadDem() {
   });
   await loading.present();
 
-  this.demService.getDem(this.demId).subscribe(res => {
+  this.demserviceService.getDem(this.demId).subscribe(res => {
     loading.dismiss();
     this.dem = res;
   });
@@ -49,12 +48,12 @@ async saveDem() {
   await loading.present();
 
   if (this.demId) {
-    this.demService.updateDem(this.dem, this.demId).then(() => {
+    this.demserviceService.updateDem(this.dem, this.demId).then(() => {
       loading.dismiss();
       this.nav.navigateBack("\home", true);
     });
   } else {
-    this.demService.addDem(this.dem).then(() => {
+    this.demserviceService.addDem(this.dem).then(() => {
       loading.dismiss();
       this.nav.navigateBack("\home", true);
     });

@@ -1,26 +1,21 @@
 <ion-header>
   <ion-toolbar color="primary" >
     <ion-buttons slot="start" >
-      <ion-back-button defaultHref="/cadastrar-demanda"></ion-back-button>
+      <ion-back-button defaultHref="/home"></ion-back-button>
 
     </ion-buttons>
-    <ion-title>
-      cadastrar-demanda
-    </ion-title>
+    <ion-title>demanda</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list lines= "full">
-
-      <ion-item>
-          <ion-input required type="text" placeholder="Descricao" [(ngModel)]="dem.desc"></ion-input>
-        </ion-item>    
-    
-    <!-- <label class="item item-input" id="cadastro-descricao"> -->
-      <span class="input-label">Descricao</span>
-     
-    </label>
-      <ion-button expand="full" (click)="saveDem()" routerLink="/cadastrar_demanda">Cadastrar</ion-button>
+    <ion-list lines="full">
+        <ion-item>
+            <ion-input required type="text" placeholder="Descricao" [(ngModel)]="dem.descricao"></ion-input>
+        </ion-item>
+        <!-- Ainda falta fazer o carregamento de fotos -->
+          <h2>Carregar fotos</h2>
+          </ion-list>
+      <ion-button expand="full" (click)="saveDem()" routerLink="/demanda">Cadastrar</ion-button>
   </ion-content>
   
