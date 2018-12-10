@@ -32,7 +32,10 @@ export class TodoService {
     );
   }
  
-  getTodos() {
+  getTodos( ) {
+    // this.todosCollection = db.collection<Todo>('servico');
+ 
+    this.todos = this.todosCollection.valueChanges();
     return this.todos;
   }
  

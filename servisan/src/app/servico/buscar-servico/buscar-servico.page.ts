@@ -27,14 +27,14 @@ export class BuscarServicoPage implements OnInit {
   }
 
   getItems(ev: any) {
-    // Reset items back to all of the items
-    this.atualizar();
+    
 
     // set val to the value of the searchbar
     const val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val.length >0) {
+     
       console.log("Entrou");
       console.log(this.todos[0].descricao);
       this.todos =  this.todos.filter((v) => {
@@ -46,6 +46,9 @@ export class BuscarServicoPage implements OnInit {
         }
       
       });
+    } else {
+       // Reset items back to all of the items
+       this.atualizar();
     }
     console.log(val, this.todos.length);
   };
