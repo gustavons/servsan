@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AngularFireAuth } from 'angularfire2/auth';
  
 export interface Cad {
   id?: string;
@@ -25,7 +26,7 @@ export interface Cad {
    
     private cads: Observable<Cad[]>;
    
-    constructor(db: AngularFirestore) {
+    constructor(public fAuth: AngularFireAuth,db: AngularFirestore) {
       this.cadsCollection = db.collection<Cad>('cadastro');
    
       this.cads = this.cadsCollection.snapshotChanges().pipe(
@@ -51,9 +52,35 @@ export interface Cad {
       return this.cadsCollection.doc(id).update(cad);
     }
    
-    addCad(cad: Cad) {
+    async addCad(cad: Cad) {
+      var r = await this.fAuth.auth.createUserWithEmailAndPassword(
+        cad.email,
+        cad.senha
+      );
+      cad.id = r.user.uid;
+      cad.email = "";
+      cad.senha ="";
       return this.cadsCollection.add(cad);
     }
+
+     
+  
+  //   async register() {
+  //     try {
+  //       var r = await this.fAuth.auth.createUserWithEmailAndPassword(
+  //         this.user.email,
+  //         this.user.password
+  //       );
+  //       if (r) {
+  //         console.log("Successfully registered!");
+  //         this.navCtrl.setRoot('LoginPage');
+  //       }
+  
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
+  // }
    
     removeCad(id) {
       return this.cadsCollection.doc(id).delete();

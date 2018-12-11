@@ -15,6 +15,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-servico.module';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 
@@ -24,7 +25,8 @@ import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-serv
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   	AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AlterarServicoPageModule
+    AlterarServicoPageModule,
+    AngularFireAuthModule
   ],
   providers: [
     StatusBar,
