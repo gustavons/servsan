@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic FireTodos
+      ServSan
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Coisas a serem aparecidas </h1>
+  <h1>Funcionalidades </h1>
   <!-- <ion-list>
 
     <ng-container *ngIf="!todos || todos.length == 0">
@@ -39,19 +39,18 @@
 
   </ion-list> -->
   <button ion-button full routerLink="/buscar-servico" routerDirection="forward">Buscar Serviço</button>
-
+  <p></p>
   <button ion-button full routerLink="/login" routerDirection="forward">Login</button>
+  <p></p>
+  <button ion-button full routerLink="/cadastrar-demanda" routerDirection="forward" >Cadastrar Demanda</button>
+  <p></p>
+  <button ion-button full routerLink="/cadastro-usuario" routerDirection="forward" >Cadastrar Usuario</button>
+  <p></p>
+  <button ion-button full routerLink="/visualizar-demanda" routerDirection="forward" >Visualizar demanda</button>
+  <p></p>
+  <button ion-button full routerLink="/servico" routerDirection="forward" >Adicionar Serviço</button>
+  <p></p>
+  <button ion-button color="light" routerLink="/visualizar-usuario"routerDirection="forward">Visualizar Usuario</button>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/servico" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <ion-fab vertical="bottom" >
-    <ion-fab-button routerLink="/visualizar_usuario" routerDirection="forward">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 </ion-content>

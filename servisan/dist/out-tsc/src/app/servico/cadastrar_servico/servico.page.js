@@ -53,8 +53,8 @@ var ServicoPage = /** @class */ (function () {
         this.todoService = todoService;
         this.loadingController = loadingController;
         this.todo = {
-            Titulo: '',
-            Descricao: '',
+            // fotos: '',
+            descricao: '',
             createdAt: new Date().getTime(),
         };
         this.todoId = null;

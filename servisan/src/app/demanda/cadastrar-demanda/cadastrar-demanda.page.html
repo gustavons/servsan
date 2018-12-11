@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/home"></ion-back-button>
+
+    </ion-buttons>
+    <ion-title>demanda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list lines="full">
+        <ion-item>
+            <ion-input required type="text" placeholder="Descricao" [(ngModel)]="dem.descricao"></ion-input>
+        </ion-item>
+        <!-- Ainda falta fazer o carregamento de fotos -->
+          <h2>Carregar fotos</h2>
+          </ion-list>
+      <ion-button expand="full" (click)="saveDem()" routerLink="/demanda">Cadastrar</ion-button>
+  </ion-content>
+  

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/alterar-demanda"></ion-back-button>
+        </ion-buttons>
+    <ion-title>alterar-demanda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="true" class="has-header" >
+    <label class="item item-input" id="descricao">
+        <span class="input-label">descricao do servico</span>
+        <ion-item>
+          <ion-input required type="text" placeholder="descricao" [(ngModel)]="dem.descricao"></ion-input>
+        </ion-item>    
+      </label>
+
+</ion-content>

@@ -14,48 +14,48 @@ export interface Cad {
   email:'',
   senha:'',
   createdAt: number,
-}; 
-
- 
-@Injectable({
-  providedIn: 'root'
-})
-export class CadService {
-  private cadsCollection: AngularFirestoreCollection<Cad>;
- 
-  private cads: Observable<Cad[]>;
- 
-  constructor(db: AngularFirestore) {
-    this.cadsCollection = db.collection<Cad>('cadastro');
- 
-    this.cads = this.cadsCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
+};
+  
+   
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CadService {
+    private cadsCollection: AngularFirestoreCollection<Cad>;
+   
+    private cads: Observable<Cad[]>;
+   
+    constructor(db: AngularFirestore) {
+      this.cadsCollection = db.collection<Cad>('cadastro');
+   
+      this.cads = this.cadsCollection.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
+    }
+   
+    getCads() {
+      return this.cads;
+    }
+   
+    getCad(id) {
+      return this.cadsCollection.doc<Cad>(id).valueChanges();
+    }
+   
+    updateCad(cad: Cad, id: string) {
+      return this.cadsCollection.doc(id).update(cad);
+    }
+   
+    addCad(cad: Cad) {
+      return this.cadsCollection.add(cad);
+    }
+   
+    removeCad(id) {
+      return this.cadsCollection.doc(id).delete();
+    }
   }
- 
-  getCads() {
-    return this.cads;
-  }
- 
-  getCad(id) {
-    return this.cadsCollection.doc<Cad>(id).valueChanges();
-  }
- 
-  updateCad(cad: Cad, id: string) {
-    return this.cadsCollection.doc(id).update(cad);
-  }
- 
-  addCad(cad: Cad) {
-    return this.cadsCollection.add(cad);
-  }
- 
-  removeCad(id) {
-    return this.cadsCollection.doc(id).delete();
-  }
-}
