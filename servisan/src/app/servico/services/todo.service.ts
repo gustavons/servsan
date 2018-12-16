@@ -36,7 +36,17 @@ export class TodoService {
     // this.todosCollection = db.collection<Todo>('servico');
  
     this.todos = this.todosCollection.valueChanges();
+    this.todos = this.todosCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
     return this.todos;
+    
   }
  
   getTodo(id) {

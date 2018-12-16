@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
  
 export interface Cad {
   id?: string;
+  iduser?: string;
   nome: '',
   cpf: '', 
   nasci: '',
@@ -57,7 +58,7 @@ export interface Cad {
         cad.email,
         cad.senha
       );
-      cad.id = r.user.uid;
+      cad.iduser = r.user.uid;
       cad.email = "";
       cad.senha ="";
       return this.cadsCollection.add(cad);

@@ -14,6 +14,9 @@ const routes: Routes = [
   { path: 'visualizar-demanda', loadChildren: './demanda/visualizar-demanda/visualizar-demanda.module#VisualizarDemandaPageModule' },
   { path: 'buscar-servico', loadChildren: './servico/buscar-servico/buscar-servico.module#BuscarServicoPageModule' },
   { path: 'login', loadChildren: './login/login/login.module#LoginPageModule' },
+  { path: 'detalhe-servico/:id', loadChildren: './servico/detalhe-servico/detalhe-servico.module#DetalheServicoPageModule' },
+  { path: 'cadastro-usuario/:id', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
+
 ];
 
 @NgModule({

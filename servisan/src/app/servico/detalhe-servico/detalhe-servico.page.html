@@ -1,21 +1,27 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/buscar-servico"></ion-back-button>
     </ion-buttons>
     <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
  
 <ion-content padding>
+
+    
+
   <ion-list lines="full">
-    <ion-item>
-      <ion-input required type="text" placeholder="Descrição" [(ngModel)]="todo.descricao"></ion-input>
+    <ion-item class="item-thumbnail-left">
+        <h1>Descrição:   </h1>
+        
+        <p>{{todo.descricao}}</p>
     </ion-item>
+    
     <!-- Ainda falta fazer o carregamento de fotos -->
     <ion-item class="item-thumbnail-left" id="oferecerServiOs-list-item24">
-      <h2>Carregar fotos</h2>
+      <h2>FOTO</h2>
     </ion-item>
   </ion-list>
-  <ion-button expand="full" (click)="saveTodo()" routerLink="/servico" class="button button-positive button-block">Salvar</ion-button>
+  <ion-button (click)="editar()" routerLink="/servico" class="button button-positive button-block">Editar</ion-button>
 </ion-content>

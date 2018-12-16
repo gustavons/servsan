@@ -22,7 +22,7 @@
     </ng-container> -->
 
     <ion-item-sliding *ngFor="let item of todos">
-      <ion-item lines="inset" button [routerLink]="['/alterar-servico', item.id]">
+      <ion-item lines="inset" button [routerLink]="['/detalhe-servico', item.id]">
         
         <p>{{ item.descricao }}</p>
           
