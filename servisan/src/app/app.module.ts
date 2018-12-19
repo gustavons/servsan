@@ -23,14 +23,13 @@ import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SortPipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   	AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AlterarServicoPageModule,
     AngularFireAuthModule,
-    PipesModule,
     IonicStorageModule.forRoot()
   ],
   providers: [

@@ -52,6 +52,8 @@ export class ChatroomPage implements OnInit {
         this.chats = chats;
        
       });
+
+    
   } //ngOnInit
 
   addChat() {
