@@ -59,7 +59,7 @@ export interface Cad {
         cad.senha
       );
       cad.iduser = r.user.uid;
-      cad.email = "";
+      // cad.email = "";
       cad.senha ="";
       return this.cadsCollection.add(cad);
     }

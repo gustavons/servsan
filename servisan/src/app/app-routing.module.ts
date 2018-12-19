@@ -16,6 +16,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login/login.module#LoginPageModule' },
   { path: 'detalhe-servico/:id', loadChildren: './servico/detalhe-servico/detalhe-servico.module#DetalheServicoPageModule' },
   { path: 'cadastro-usuario/:id', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
+  { path: 'chats', loadChildren: './contato/chats/chats.module#ChatsPageModule' },
+  { path: 'chatroom', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
 
 ];
 

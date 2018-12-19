@@ -1,3 +1,4 @@
+import { PipesModule } from './pipes/pipes.module';
 import { CadService } from './usuario/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-servico.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { IonicStorageModule } from '@ionic/storage';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 
@@ -26,7 +29,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   	AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AlterarServicoPageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    PipesModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,

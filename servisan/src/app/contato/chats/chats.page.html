@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chats</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      USERS
+    </ion-list-header>
+    <ion-item *ngFor="let user of availableusers" (click)="goToChat(user)">
+      <ion-avatar item-start>
+        <img src="http://via.placeholder.com/16x16">
+      </ion-avatar>
+      <h2>{{user.nome}}</h2>
+
+      <p>{{user.email}}</p>
+    </ion-item>
+
+  </ion-list>
+  
+</ion-content>

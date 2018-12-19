@@ -7,20 +7,28 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-content padding id="signInPage">
+  <h3>Entrar</h3>
 
-<ion-content padding>
-  <ion-item>
-    <ion-label>Email Address</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
+  <div id="signInForm">
+    <ion-list>
 
-  <ion-item>
-    <ion-label>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="loginForm.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Senha</ion-label>
+        <ion-input type="text" [(ngModel)]="loginForm.password"></ion-input>
+      </ion-item>
 
-  <button ion-button routerLinkActive="router-link-active"  (click)="login()">Login</button>
+      <ion-item>
+        <button ion-button large block (click)="loginUser()">Entrar</button>
+      </ion-item>
 
-  <button ion-button routerLink="/cadastro-usuario">Cadastrar</button>
+    </ion-list>
+  </div>
+
+
 
 </ion-content>
