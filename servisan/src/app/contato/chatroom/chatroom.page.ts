@@ -82,6 +82,6 @@ export class ChatroomPage implements OnInit {
   } //addChat
 
   isChatPartner(senderEmail) {
-    return senderEmail == this.chatpartner.email;
+    return senderEmail != this.chatpartner.email;
   } //isChatPartner
 }
