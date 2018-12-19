@@ -11,7 +11,7 @@
 
   <ion-list>
 
-    <ion-item *ngFor="let chat of chats | sort:'time'" class="chat" text-wrap [ngClass]="{'chat-partner' : isChatPartner(chat.sender)}">
+    <ion-item *ngFor="let chat of chats | sort: 'time' " class="chat" text-wrap [ngClass]="{'chat-partner' : isChatPartner(chat.sender)}">
       {{chat.message}}
     </ion-item>
 

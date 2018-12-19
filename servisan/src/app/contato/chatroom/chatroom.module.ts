@@ -1,3 +1,4 @@
+import { SortPipe } from './../../pipes/sort.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ChatroomPage]
+  declarations: [ChatroomPage, SortPipe]
 })
 export class ChatroomPageModule {}

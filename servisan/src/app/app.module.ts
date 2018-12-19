@@ -1,5 +1,3 @@
-import { PipesModule } from './pipes/pipes.module';
-import { CadService } from './usuario/services/user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -23,7 +21,7 @@ import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, SortPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   	AngularFireModule.initializeApp(environment.firebase),

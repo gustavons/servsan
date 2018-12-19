@@ -38,7 +38,7 @@ export class ChatroomPage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.get("chatuser").then(chatuser => {
+    this.storage.get("cadastro").then(chatuser => {
       this.chatuser = chatuser;
     });
 
