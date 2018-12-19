@@ -2,7 +2,7 @@ import { Dem, DemserviceService } from './../services/demservice.service';
 import { NavController, LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { ComponentFixture } from '@angular/core/testing';
 @Component({
   selector: 'app-cadastrar-demanda',
   templateUrl: './cadastrar-demanda.page.html',
@@ -18,7 +18,7 @@ export class CadastrarDemandaPage implements OnInit {
   };
   demId = null;
 
-  constructor(private route: ActivatedRoute, private nav: NavController, private demserviceService: DemserviceService,private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private demserviceService: DemserviceService, private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.demId = this.route.snapshot.params['id'];
