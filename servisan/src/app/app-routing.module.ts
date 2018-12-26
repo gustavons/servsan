@@ -1,3 +1,4 @@
+import { IonRatingModule } from './ion-rating/ion-rating.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'cadastro-usuario/:id', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
   { path: 'chats', loadChildren: './contato/chats/chats.module#ChatsPageModule' },
   { path: 'chatroom', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
-  { path: 'ion-rating/:id', loadChildren: './ion-rating/ion-rating/ion-rating.module' },
+  { path: 'ion-rating/:id', loadChildren: './ion-rating/ion-rating/ion-rating.module#IonRatingModule' },
 ];
 
 @NgModule({
