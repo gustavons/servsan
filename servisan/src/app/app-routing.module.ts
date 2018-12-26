@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cadastro-usuario/:id', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
   { path: 'chats', loadChildren: './contato/chats/chats.module#ChatsPageModule' },
   { path: 'chatroom', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
-
+  { path: 'ion-rating/:id', loadChildren: './ion-rating/ion-rating/ion-rating.module' },
 ];
 
 @NgModule({

@@ -9,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
- 
+
   todos: Todo[];
+  
 
   constructor(private todoService: TodoService, public modal: ModalController) { }
+  log(valor){
+    console.log(valor);
+  }
+
 
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
