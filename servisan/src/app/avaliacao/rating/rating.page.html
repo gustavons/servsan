@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>rating</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid class="ion-rating-container">
+    <ion-row>
+      <ion-col *ngFor="let star of stars; let i = index" tappable (click) ="starClicked(i)">
+        <ion-icon [name]="star"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
