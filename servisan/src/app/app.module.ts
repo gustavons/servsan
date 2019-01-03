@@ -1,7 +1,7 @@
+import { RatingPageModule } from './avaliacao/rating/rating.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -13,13 +13,12 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-servico.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IonicStorageModule } from '@ionic/storage';
-import { SortPipe } from './pipes/sort.pipe';
-import { IonRatingComponent } from './ion-rating/ion-rating.component';
+
 
 
 
 @NgModule({
-  declarations: [AppComponent, IonRatingComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   	AngularFireModule.initializeApp(environment.firebase),

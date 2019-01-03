@@ -5,11 +5,9 @@ import { map } from 'rxjs/operators';
 
 export interface Dem {
   id?: string;
-  descricao: '',
-  
-  createdAt: number,
-}; 
-
+  descricao: '';
+  createdAt: number;
+}
  
 @Injectable({
   providedIn: 'root'
@@ -34,6 +32,18 @@ export class DemserviceService {
   }
  
   getDems() {
+    this.dems = this.demsCollection.valueChanges();
+    this.dems = this.demsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+
     return this.dems;
   }
  
