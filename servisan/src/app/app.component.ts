@@ -55,6 +55,11 @@ export class AppComponent {
       url: '/',
       icon: 'filing'
     },
+    {
+      title: 'Sobre',
+      url: '/',
+      icon: 'people'
+    },
   ];
 
 

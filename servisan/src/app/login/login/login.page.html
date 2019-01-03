@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class = 'login' color="primary">
     <ion-title>
       Login
     </ion-title>
@@ -24,6 +24,10 @@
 
       <ion-item>
         <button ion-button large block (click)="loginUser()">Entrar</button>
+      </ion-item>
+
+      <ion-item>
+          <button ion-button large block routerLink="/cadastro-usuario">Novo Usuário</button>
       </ion-item>
 
     </ion-list>

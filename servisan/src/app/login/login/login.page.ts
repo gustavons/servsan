@@ -52,14 +52,13 @@ export class LoginPage implements OnInit {
   // }
 
   ngOnInit() {
-    this.storage.get("cadastro").then(chatuser => {
-      if (chatuser && chatuser.email !== "") {
-        this.navCtrl.navigateForward("home");
-      }
-    });
+    // this.storage.get("cadastro").then(chatuser => {
+    //   if (chatuser && chatuser.email !== "") {
+    //     this.navCtrl.navigateForward("home");
+    //   }
+    // });
   }
   
-
   
 
   async loginUser() {

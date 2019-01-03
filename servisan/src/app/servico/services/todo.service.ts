@@ -1,8 +1,10 @@
+import { CadService } from './../../usuario/services/user.service';
 import { User } from './../../login/services/email-login.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 // import { userInfo } from 'os';
  
 export interface Todo {
@@ -20,10 +22,13 @@ export class TodoService {
   private todosCollection: AngularFirestoreCollection<Todo>;
  
   private todos: Observable<Todo[]>;
+
+  private cadUser = null;
  
-  constructor(db: AngularFirestore) {
+  constructor(db: AngularFirestore,  private cadService: CadService) {
+
     this.todosCollection = db.collection<Todo>('servico');
- 
+    this.cadUser = cadService;
     this.todos = this.todosCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -61,7 +66,10 @@ export class TodoService {
   }
  
   addTodo(todo: Todo) {
-    // todo.isuser = userInfo
+    // var a = this.cadUser.getCurrentUser();
+    // console.log('A informacao de data todo ' + this.cadUser.getCurrentUser());
+
+    todo.isuser = firebase.auth().currentUser.uid;
     return this.todosCollection.add(todo);
   }
  

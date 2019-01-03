@@ -1,3 +1,4 @@
+import { Firebase } from '@ionic-native/firebase/ngx';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
@@ -65,7 +66,25 @@ export interface Cad {
     }
 
      
+    // getCurrentUser() {
+    //   this.fAuth.authState.subscribe(data => {
+    //     console.log('A informacao de data ' + data.uid);
+    //     return data;
+    //   });
+      
+    // }
+
+    // getUid() {
+    //   a =  this.getCurrentUser();
+    //   console.log('A informacao de data ' + a.uid);
+    //   return a;
+      
+    // }
   
+    // getUserFirstName() {
+    //   this.profileData = this.afData.object(`profile/` + this.getCurrentUser());
+    //   return this.profileData;
+    // }
   //   async register() {
   //     try {
   //       var r = await this.fAuth.auth.createUserWithEmailAndPassword(

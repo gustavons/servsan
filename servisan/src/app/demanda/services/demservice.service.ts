@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 export interface Dem {
   id?: string;
@@ -57,6 +58,7 @@ export class DemserviceService {
   }
  
   addDem(dem: Dem) {
+    dem.isuser = firebase.auth().currentUser.uid;
     return this.demsCollection.add(dem);
   }
  
