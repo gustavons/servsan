@@ -1,4 +1,3 @@
-import { IonRatingModule } from './ion-rating/ion-rating.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -20,10 +19,14 @@ const routes: Routes = [
   { path: 'chats', loadChildren: './contato/chats/chats.module#ChatsPageModule' },
   { path: 'chatroom', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
   { path: 'rating/:id', loadChildren: './avaliacao/rating/rating.module#RatingPageModule' },
+<<<<<<< HEAD
   { path: 'minhas_demandas', loadChildren: './demanda/minhas-demandas/minhas-demandas.module#MinhasDemandasPageModule' },
   { path: 'meus_servicos', loadChildren: './servico/meus-servicos/meus-servicos.module#MeusServicosPageModule' },
   { path: 'detalhe_demanda', loadChildren: './demanda/detalhe-demanda/detalhe-demanda.module#DetalheDemandaPageModule' },
   // { path: 'ion-rating/:id', loadChildren: './ion-rating/ion-rating/ion-rating.module#IonRatingComponentModule' },
+=======
+  
+>>>>>>> e31da5062ee4b840fe2db0e490c0054dfa8c4f33
 ];
 
 @NgModule({

@@ -1,4 +1,8 @@
+import { AvaserviceService } from './../services/avaservice.service';
 import { Component, Input, Output, EventEmitter,  OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-rating',
@@ -7,7 +11,7 @@ import { Component, Input, Output, EventEmitter,  OnInit } from '@angular/core';
 })
 export class RatingPage {
   @Input() numStars: number = 5;
-  @Input() value: number = 2.5  ;
+  @Input() value: number = 2.5;
 
   @Output() ionClick: EventEmitter<number> = new EventEmitter<number>();
 

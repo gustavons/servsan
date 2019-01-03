@@ -1,6 +1,5 @@
 import { Dem,DemserviceService } from './../services/demservice.service';
 import { Component, OnInit } from '@angular/core';
-import { ComponentFixture } from '@angular/core/testing';
 import { NavController, LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
@@ -30,7 +29,7 @@ export class AlterarDemandaPage implements OnInit {
   
   async loadDem() {
     const loading = await this.loadingController.create({
-      message: 'Carregando Demanda..'
+      message: 'Carregando Dem'
     });
     await loading.present();
   
@@ -43,7 +42,7 @@ export class AlterarDemandaPage implements OnInit {
   async saveDem() {
   
     const loading = await this.loadingController.create({
-      message: 'Salvando Cadastro...'
+      message: 'Salvando Demanda...'
     });
     await loading.present();
   
