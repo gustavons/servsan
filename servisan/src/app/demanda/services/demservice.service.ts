@@ -5,7 +5,8 @@ import { map } from 'rxjs/operators';
 
 export interface Dem {
   id?: string;
-  descricao: '',
+  isuser?: string;
+  descricao: string,
   
   createdAt: number,
 }; 
@@ -34,6 +35,16 @@ export class DemserviceService {
   }
  
   getDems() {
+    this.dems = this.demsCollection.valueChanges();
+    this.dems = this.demsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
     return this.dems;
   }
  

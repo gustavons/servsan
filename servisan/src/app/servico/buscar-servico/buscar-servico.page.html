@@ -3,12 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Serviços</ion-title>
+    <ion-title>Buscar Serviços</ion-title>
   </ion-toolbar>
 </ion-header>
  
 <ion-content padding>
-  <h1>Coisas a serem aparecidas </h1>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
   <ion-list>
@@ -23,7 +22,7 @@
 
     <ion-item-sliding *ngFor="let item of todos">
       <ion-item lines="inset" button [routerLink]="['/detalhe-servico', item.id]">
-        
+      
         <p>{{ item.descricao }}</p>
           
         <ion-note color="primary">{{ item.createdAt | date:'short' }}</ion-note>

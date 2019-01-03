@@ -7,14 +7,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export interface Cad {
   id?: string;
   iduser?: string;
-  nome: '',
-  cpf: '', 
-  nasci: '',
-  cel: '',
-  endereco: '',
-  cep: '',
-  email:'',
-  senha:'',
+  nome: string,
+  cpf: string, 
+  nasci: string,
+  cel: string,
+  endereco: string,
+  cep: string,
+  email:string,
+  senha:string,
   createdAt: number,
 };
   

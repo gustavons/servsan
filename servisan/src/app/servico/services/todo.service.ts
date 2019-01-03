@@ -1,10 +1,13 @@
+import { User } from './../../login/services/email-login.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+// import { userInfo } from 'os';
  
 export interface Todo {
   id?: string;
+  isuser?: string;
   // fotos: string;
   descricao:string;
   createdAt: number;
@@ -58,6 +61,7 @@ export class TodoService {
   }
  
   addTodo(todo: Todo) {
+    // todo.isuser = userInfo
     return this.todosCollection.add(todo);
   }
  

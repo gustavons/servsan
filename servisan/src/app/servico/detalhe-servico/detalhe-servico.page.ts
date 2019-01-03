@@ -58,9 +58,9 @@ export class DetalheServicoPage implements OnInit {
     }
   }
 
-  editar(){
-    this.nav.navigateBack("\alterar-servico/"+this.todoId, true);
-  }
+  // editar(){
+  //   this.nav.navigateBack("\alterar-servico/"+this.todoId, true);
+  // }
  
  
 }

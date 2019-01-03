@@ -28,6 +28,8 @@ export class LoginPage implements OnInit {
   //   password: ''
   // }
 
+  public userAuth;
+
   //email: string;
   loginForm: any = {};
   
@@ -69,6 +71,8 @@ export class LoginPage implements OnInit {
           this.loginForm.email,
           this.loginForm.password
         );
+
+        this.userAuth = r;
 
         this.db
         .collection<User>("cadastro", ref => {

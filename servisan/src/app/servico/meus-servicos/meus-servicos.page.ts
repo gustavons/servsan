@@ -1,0 +1,55 @@
+import { Component, OnInit } from '@angular/core';
+import { Todo, TodoService } from '../services/todo.service';
+
+@Component({
+  selector: 'app-meus-servicos',
+  templateUrl: './meus-servicos.page.html',
+  styleUrls: ['./meus-servicos.page.scss'],
+})
+export class MeusServicosPage implements OnInit {
+
+  todos: Todo[];
+
+  constructor(private todoService: TodoService) { }
+
+  ngOnInit() {
+    this.todoService.getTodos().subscribe(res => {
+      this.todos = res;
+    });
+  }
+
+  atualizar(){
+    this.todoService.getTodos().subscribe(res => {
+      this.todos = res;
+    });
+  }
+
+  getItems(ev: any) {
+    
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val.length >0) {
+     
+      console.log("Entrou");
+      console.log(this.todos[0].descricao);
+      this.todos =  this.todos.filter((v) => {
+        if(v.descricao && val) {
+          if (v.descricao.toLowerCase().indexOf(val.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      
+      });
+    } else {
+       // Reset items back to all of the items
+       this.atualizar();
+    }
+    console.log(val, this.todos.length);
+  };
+  
+
+}

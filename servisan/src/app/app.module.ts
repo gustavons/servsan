@@ -13,13 +13,13 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AlterarServicoPageModule } from './servico/alterar-servico/alterar-servico.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IonicStorageModule } from '@ionic/storage';
-import { SortPipe } from './pipes/sort.pipe';
-import { IonRatingComponent } from './ion-rating/ion-rating.component';
 
+import { Firebase } from '@ionic-native/firebase/ngx';
+import { FcmService } from './notificacao/service/fcm.service';
 
 
 @NgModule({
-  declarations: [AppComponent, IonRatingComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   	AngularFireModule.initializeApp(environment.firebase),
@@ -31,6 +31,8 @@ import { IonRatingComponent } from './ion-rating/ion-rating.component';
   providers: [
     StatusBar,
     SplashScreen,
+    Firebase,
+    FcmService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
