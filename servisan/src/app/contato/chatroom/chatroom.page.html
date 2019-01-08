@@ -10,11 +10,9 @@
 <ion-content #content padding id="chatPage">
 
   <ion-list>
-
     <ion-item *ngFor="let chat of chats | sort: 'time' " class="chat" text-wrap [ngClass]="{'chat-partner' : isChatPartner(chat.sender)}">
       {{chat.message}}
     </ion-item>
-
   </ion-list>
 
 </ion-content>

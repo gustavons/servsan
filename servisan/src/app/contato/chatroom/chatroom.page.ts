@@ -25,7 +25,6 @@ export class ChatroomPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    
     private db: AngularFirestore,
     private chatService: ChatService,
     private storage: Storage

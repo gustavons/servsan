@@ -6,7 +6,7 @@ import * as firebase from 'firebase';
 
 export interface Dem {
   id?: string;
-  isuser?: string;
+  iduser?: string;
   descricao: string,
   
   createdAt: number,
@@ -20,8 +20,11 @@ export class DemserviceService {
   private demsCollection: AngularFirestoreCollection<Dem>;
  
   private dems: Observable<Dem[]>;
+  colletionDemandaUser: AngularFirestoreCollection<Dem>;
+
+  private demsUser: Observable<Dem[]>
  
-  constructor(db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {
     this.demsCollection = db.collection<Dem>('Demanda');
  
     this.dems = this.demsCollection.snapshotChanges().pipe(
@@ -48,6 +51,23 @@ export class DemserviceService {
     );
     return this.dems;
   }
+
+
+  getDemandasUser(){
+
+    this.colletionDemandaUser = this.db.collection<Dem>('Demanda', ref => ref.where('iduser', '==', firebase.auth().currentUser.uid));
+    this.demsUser = this.colletionDemandaUser.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    return this.demsUser
+  }
+
  
   getDem(id) {
     return this.demsCollection.doc<Dem>(id).valueChanges();
@@ -58,7 +78,7 @@ export class DemserviceService {
   }
  
   addDem(dem: Dem) {
-    dem.isuser = firebase.auth().currentUser.uid;
+    dem.iduser = firebase.auth().currentUser.uid;
     return this.demsCollection.add(dem);
   }
  

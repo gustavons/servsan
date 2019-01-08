@@ -57,7 +57,7 @@ export class AppComponent {
     },
     {
       title: 'Sobre',
-      url: '/',
+      url: '/sobre_dev',
       icon: 'people'
     },
   ];

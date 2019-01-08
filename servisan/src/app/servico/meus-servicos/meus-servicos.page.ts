@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
+import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { 
+  AngularFireDatabase, 
+  AngularFireList } from 'angularfire2/database';
+
 
 @Component({
   selector: 'app-meus-servicos',
@@ -9,17 +17,26 @@ import { Todo, TodoService } from '../services/todo.service';
 export class MeusServicosPage implements OnInit {
 
   todos: Todo[];
+  
 
-  constructor(private todoService: TodoService) { }
+  colletionServicesUser: AngularFirestoreCollection<Todo>;
+  
+  myServices;
+  dados: AngularFireList<{}>;
+  
 
-  ngOnInit() {
-    this.todoService.getTodos().subscribe(res => {
+  constructor(private todoService: TodoService, private fireStore: AngularFirestore, private af: AngularFireDatabase) {     
+  }
+    
+    
+  ngOnInit() {    
+    this.todoService.getTodosUser().subscribe(res => {
       this.todos = res;
     });
   }
 
   atualizar(){
-    this.todoService.getTodos().subscribe(res => {
+    this.todoService.getTodosUser().subscribe(res => {
       this.todos = res;
     });
   }

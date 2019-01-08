@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'minhas_demandas', loadChildren: './demanda/minhas-demandas/minhas-demandas.module#MinhasDemandasPageModule' },
   { path: 'meus_servicos', loadChildren: './servico/meus-servicos/meus-servicos.module#MeusServicosPageModule' },
   { path: 'detalhe_demanda', loadChildren: './demanda/detalhe-demanda/detalhe-demanda.module#DetalheDemandaPageModule' },
+  { path: 'sobre_dev', loadChildren: './sobre/sobre-dev/sobre-dev.module#SobreDevPageModule' },
   // { path: 'ion-rating/:id', loadChildren: './ion-rating/ion-rating/ion-rating.module#IonRatingComponentModule' },
 ];
 
