@@ -3,14 +3,15 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { User } from './../../login/services/email-login.service';
 
 export interface Dem {
   id?: string;
   isuser?: string;
-  descricao: string,
+  descricao: string;
   
-  createdAt: number,
-}; 
+  createdAt: number;
+}
 
  
 @Injectable({
