@@ -57,15 +57,15 @@ export class ChatsPage implements OnInit {
     });
   }
 
-  goToChat(chatpartner) {
-    this.chatService.currentChatPairId = this.chatService.createPairId(
-      this.chatuser,
-      chatpartner
-    );
+  // goToChat(chatpartner) {
+  //   this.chatService.currentChatPairId = this.chatService.createPairId(
+  //     this.chatuser,
+  //     chatpartner
+  //   );
 
-    this.chatService.currentChatPartner = chatpartner;
+  //   this.chatService.currentChatPartner = chatpartner;
 
-    this.navCtrl.navigateForward('chatroom');
+  //   this.navCtrl.navigateForward('chatroom');
 
-  } //goToChat
+  // } //goToChat
 }

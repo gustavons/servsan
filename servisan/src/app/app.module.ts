@@ -1,3 +1,4 @@
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { RatingPageModule } from './avaliacao/rating/rating.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,6 +27,7 @@ import { FcmService } from './notificacao/service/fcm.service';
     AngularFirestoreModule,
     AlterarServicoPageModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     IonicStorageModule.forRoot()
   ],
   providers: [

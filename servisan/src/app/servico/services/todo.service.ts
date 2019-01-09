@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
  
 export interface Todo {
   id?: string;
-  isuser?: string;
+  iduser?: string;
   // fotos: string;
   descricao:string;
   createdAt: number;
@@ -24,8 +24,14 @@ export class TodoService {
   private todos: Observable<Todo[]>;
 
   private cadUser = null;
+  colletionServicesUser: AngularFirestoreCollection<Todo>;
+  to: Observable<Todo[]>;
+
+  
+
+
  
-  constructor(db: AngularFirestore,  private cadService: CadService) {
+  constructor(private db: AngularFirestore,  private cadService: CadService) {
 
     this.todosCollection = db.collection<Todo>('servico');
     this.cadUser = cadService;
@@ -56,6 +62,21 @@ export class TodoService {
     return this.todos;
     
   }
+
+  getTodosUser(){
+
+    this.colletionServicesUser = this.db.collection<Todo>('servico', ref => ref.where('iduser', '==', firebase.auth().currentUser.uid));
+    this.to = this.colletionServicesUser.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+    return this.to
+  }
  
   getTodo(id) {
     return this.todosCollection.doc<Todo>(id).valueChanges();
@@ -69,7 +90,7 @@ export class TodoService {
     // var a = this.cadUser.getCurrentUser();
     // console.log('A informacao de data todo ' + this.cadUser.getCurrentUser());
 
-    todo.isuser = firebase.auth().currentUser.uid;
+    todo.iduser = firebase.auth().currentUser.uid;
     return this.todosCollection.add(todo);
   }
  

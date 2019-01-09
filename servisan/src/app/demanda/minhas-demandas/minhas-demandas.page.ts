@@ -13,7 +13,7 @@ export class MinhasDemandasPage implements OnInit {
   constructor(private DemserviceService: DemserviceService) { }
 
   ngOnInit() {
-    this.DemserviceService.getDems().subscribe(res => {
+    this.DemserviceService.getDemandasUser().subscribe(res => {
       this.demandas = res;
     });
   }
@@ -26,10 +26,13 @@ export class MinhasDemandasPage implements OnInit {
   }
 
   atualizar(){
-    this.DemserviceService.getDems().subscribe(res => {
+    this.DemserviceService.getDemandasUser().subscribe(res => {
       this.demandas = res;
     });
   }
+
+  
+
 
   getItems(ev: any) {
     

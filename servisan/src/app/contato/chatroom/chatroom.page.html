@@ -1,7 +1,10 @@
 <ion-header>
 
   <ion-toolbar color="primary">
-    <ion-title>{{chatpartner.name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/buscar-servico"></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-title>{{chatpartner.name}}</ion-title> -->
   </ion-toolbar>
 
 </ion-header>
@@ -9,13 +12,11 @@
 
 <ion-content #content padding id="chatPage">
 
-  <ion-list>
-
-    <ion-item *ngFor="let chat of chats | sort: 'time' " class="chat" text-wrap [ngClass]="{'chat-partner' : isChatPartner(chat.sender)}">
-      {{chat.message}}
-    </ion-item>
-
-  </ion-list>
+  <ion-grid>
+    <ion-row justify-content-end *ngFor="let chat of messageUser | sort: 'time' " class="chat" text-wrap [ngClass]="{'chat-partner' : isChatPartner(chat.sender)}">
+      <ion-col col-3>{{chat.message}}</ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
 
