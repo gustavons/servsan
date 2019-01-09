@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Todo, TodoService } from '../services/todo.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
+import * as firebase from 'firebase';
+import { ChatService } from 'src/app/contato/services/chats.service';
 
 @Component({
   selector: 'app-detalhe-servico',
@@ -9,15 +11,21 @@ import { NavController, LoadingController } from '@ionic/angular';
   styleUrls: ['./detalhe-servico.page.scss'],
 })
 export class DetalheServicoPage implements OnInit {
-  todo: Todo = {
-    // fotos: '',
-    descricao: '',  
-    createdAt: new Date().getTime(),
-  }; 
+  todo: Todo; 
+  
+  // Todo = {
+  //   // fotos: '',
+  //   descricao: '',  
+  //   createdAt: new Date().getTime(),
+  // }; 
  
   todoId = null;
  
-  constructor(private route: ActivatedRoute, private nav: NavController, private todoService: TodoService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, 
+    private todoService: TodoService, 
+    private chatService: ChatService,
+    private navCtrl: NavController,
+    private loadingController: LoadingController) { }
  
   ngOnInit() {
     this.todoId = this.route.snapshot.params['id'];
@@ -58,6 +66,18 @@ export class DetalheServicoPage implements OnInit {
     }
   }
 
+  goToChat(ofertaData, idOferta) {
+    
+    this.chatService.currentChatPairId = this.chatService.createPairId(
+      firebase.auth().currentUser,
+      ofertaData, idOferta
+    );
+    
+    
+
+    this.navCtrl.navigateForward('chatroom');
+
+  } //goToChat
   // editar(){
   //   this.nav.navigateBack("\alterar-servico/"+this.todoId, true);
   // }

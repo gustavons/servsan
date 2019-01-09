@@ -1,8 +1,10 @@
+import { Message } from './../services/chats.service';
 import { Component, OnInit, ViewChild, Pipe } from "@angular/core";
-import { NavController, NavParams } from "@ionic/angular";
+import { NavController, NavParams, LoadingController } from "@ionic/angular";
 import { AngularFirestore } from "angularfire2/firestore";
 import { Chat, ChatService } from "../services/chats.service";
 import {Storage} from '@ionic/storage';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-chatroom',
@@ -15,19 +17,22 @@ import {Storage} from '@ionic/storage';
 
 
 export class ChatroomPage implements OnInit {
-  chats: any = [];
+  messageUser: any = [];
   chatpartner = this.chatService.currentChatPartner;
   chatuser;
   message: string;
-  chatPayload: Chat;
+  chatPayload: Message;
   intervalScroll;
   @ViewChild("content") content: any;
+  conversaId: any;
+  route: any;
 
   constructor(
     public navCtrl: NavController,
     private db: AngularFirestore,
     private chatService: ChatService,
-    private storage: Storage
+    private storage: Storage,
+    private loadingController: LoadingController
   ) {}
 
   //scrolls to bottom whenever the page has loaded
@@ -37,36 +42,60 @@ export class ChatroomPage implements OnInit {
 
   ngOnInit() {
 
-    this.storage.get("cadastro").then(chatuser => {
-      this.chatuser = chatuser;
-    });
+    // this.conversaId = this.route.snapshot.params['id'];
+    // if (this.conversaId)  {
+    //   this.loadMessage();
+    // }
+    
 
-    this.db
-      .collection<Chat>("contato", res => {
-        return res.where("pair", "==", this.chatService.currentChatPairId);
-      })
-      .valueChanges()
-      .subscribe(chats => {
-        
-        this.chats = chats;
-       
+
+      this.storage.get("cadastro").then(chatuser => {
+        this.chatuser = chatuser;
       });
+
+      this.db
+        .collection<Chat>("mensagem", res => {
+          return res.where("pair", "==", this.chatService.currentChatPairId);
+        })
+        .valueChanges()
+        .subscribe(messageUser => {
+          
+          this.messageUser = messageUser;
+        
+        });
+
+      
 
     
   } //ngOnInit
 
+
+  // async loadMessage() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Loading Todo..'
+  //   });
+  //   await loading.present();
+ 
+  //   this.chatService.getChatUserByPairId(this.conversaId).subscribe(res => {
+  //     loading.dismiss();
+  //     this.messageUser = res;
+  //   });
+  // }
+
+
   addChat() {
     if (this.message && this.message !== "") {
       console.log(this.message);
-      this.chatPayload = {
-        message: this.message,
-        sender: this.chatuser.email,
-        pair: this.chatService.currentChatPairId,
-        time: new Date().getTime()
-      };
+        this.chatPayload = {
+          message: this.message,
+          senderId: firebase.auth().currentUser.uid,
+          ofertaId: this.chatService.getOfertaId(),
+          pair: this.chatService.currentChatPairId,
+          time: new Date().getTime()
+        };
 
       this.chatService
-        .addChat(this.chatPayload)
+        .addMessage(this.chatPayload)
         .then(() => {
           //Clear message box
           this.message = "";
@@ -80,7 +109,7 @@ export class ChatroomPage implements OnInit {
     }
   } //addChat
 
-  isChatPartner(senderEmail) {
-    return senderEmail != this.chatpartner.email;
+  isChatPartner(id) {
+    return id == this.chatpartner.id;
   } //isChatPartner
 }

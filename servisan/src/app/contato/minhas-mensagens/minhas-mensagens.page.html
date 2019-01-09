@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Mensagens</ion-title>
+    </ion-toolbar>
+  </ion-header>
+   
+  <ion-content padding>
+    <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
+  
+    <ion-list>
+      <!-- <ng-container *ngIf="!todos || todos.length == 0">
+        <div *ngFor="let n of [0,1,2]" padding>
+          <ion-skeleton-text></ion-skeleton-text>
+          <p>
+            <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+          </p>
+        </div>
+      </ng-container> -->
+  
+      <ion-item-sliding *ngFor="let item of chatUserInteressado">
+        <ion-item lines="inset" button [routerLink]="['/chatRoom', item.pair]">
+          
+          <p>{{ item.pair }}</p>
+            
+        </ion-item>
+        
+      
+        
+        
+      </ion-item-sliding>
+    </ion-list>
+    <ion-list>
+      <!-- <ng-container *ngIf="!todos || todos.length == 0">
+        <div *ngFor="let n of [0,1,2]" padding>
+          <ion-skeleton-text></ion-skeleton-text>
+          <p>
+            <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+          </p>
+        </div>
+      </ng-container> -->
+  
+      
+        
+        
+      
+      <ion-item-sliding *ngFor="let item of chatUserContatado">
+        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId)">
+          
+          <p>{{ item.pair }}</p>
+            
+        </ion-item>
+        
+        
+      </ion-item-sliding>
+    </ion-list>
+    <!-- <p>{{item.descricao}}</p> -->
+  
+  </ion-content>
+  

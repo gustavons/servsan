@@ -21,6 +21,11 @@ export class AppComponent {
       icon: 'home'
     },
     {
+      title: 'Mensagens',
+      url: '/minhas_mensagens',
+      icon: 'send'
+    },
+    {
       title: 'Buscar Serviço',
       url: '/buscar-servico',
       icon: 'search'
