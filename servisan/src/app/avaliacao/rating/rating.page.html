@@ -8,14 +8,7 @@
 </ion-header>
 
 <ion-content padding="true" class="has-header">
-    <ion-list lines="full">
-<!--        
-        <ion-item class="item-thumbnail-left" id="oferecerServiOs-list-item24">
-          <h2>Carregar fotos</h2>
-        </ion-item>
-      </ion-list>
-      <ion-button expand="full" (click)="saveAva()" routerLink="/rating" class="button button-positive button-block">Salvar</ion-button> -->
-
+  
   <ion-grid class="ion-rating-container">
     <ion-row>
       <ion-col *ngFor="let star of stars; let i = index" tappable (click) ="starClicked(i)">

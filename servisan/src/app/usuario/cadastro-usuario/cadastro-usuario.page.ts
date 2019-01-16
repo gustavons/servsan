@@ -28,7 +28,10 @@ export class CadastroUsuarioPage implements OnInit {
 
 cadId = null;
 
-constructor(private route: ActivatedRoute, private nav: NavController, private cadService: CadService, private loadingController: LoadingController) { }
+constructor(private route: ActivatedRoute, 
+  private nav: NavController, 
+  private cadService: CadService, 
+  private loadingController: LoadingController) { }
 
 ngOnInit() {
   this.cadId = this.route.snapshot.params['id'];
@@ -39,7 +42,7 @@ ngOnInit() {
 
 async loadCad() {
   const loading = await this.loadingController.create({
-    message: 'Carregando Cadastro..'
+    message: 'Carregando Cadastro...'
   });
   await loading.present();
 

@@ -1,3 +1,6 @@
+import { AvaserviceService } from './../../avaliacao/services/avaservice.service';
+import { Cad } from './../../usuario/services/user.service';
+import { CadService } from 'src/app/usuario/services/user.service';
 import { TodoService } from './../../servico/services/todo.service';
 import { Chat, ChatService } from './../services/chats.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +10,7 @@ import { Todo } from 'src/app/servico/services/todo.service';
 import { Dem } from 'src/app/demanda/services/demservice.service';
 import * as firebase from 'firebase';
 import { NavController } from '@ionic/angular';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-minhas-mensagens',
@@ -21,17 +25,27 @@ export class MinhasMensagensPage implements OnInit {
   
 
   colletionMessageUser: AngularFirestoreCollection<Chat>;
+
+  colletionUserInte: AngularFirestoreCollection<Chat>;
+  colletionUserPrest: AngularFirestoreCollection<Chat>;
+
+
   todoId: any;
   route: any;
   
+  prestador = "prestador";
+  contratante = "contratante";
+
   
 
   constructor(
     private chatService: ChatService, 
     private todoService: TodoService,
+    private userService: CadService,
     private db: AngularFirestore, 
     private navCtrl: NavController,
-    private af: AngularFireDatabase) {     
+    private af: AngularFireDatabase,
+    private avaService: AvaserviceService) {     
   }
     
     
@@ -42,7 +56,14 @@ export class MinhasMensagensPage implements OnInit {
     .collection<Chat>("contato", res => {
       return res.where("interessadoId", "==", firebase.auth().currentUser.uid);
     })
-    .valueChanges()
+    .snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }))
     .subscribe(chatUser => {
       
       this.chatUserInteressado = chatUser;
@@ -53,7 +74,14 @@ export class MinhasMensagensPage implements OnInit {
     .collection<Chat>("contato", res => {
       return res.where("prestadorId", "==", firebase.auth().currentUser.uid);
     })
-    .valueChanges()
+    .snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }))
     .subscribe(chatUser => {
       
       this.chatUserContatado = chatUser;
@@ -67,10 +95,30 @@ export class MinhasMensagensPage implements OnInit {
   }
 // item.interessadoId, item.prestadorId, item.ofertaId
   goToChat(interessadoId, prestadorId, ofertaId) {
+
+    var a: Cad[];
+
+    console.log("interessado id: "+ interessadoId);
+
+    this.db
+    .collection<Cad>("cadastro", res => {
+      return res.where("iduser", "==", interessadoId);
+    })
+    .valueChanges()
+    .subscribe(b => {
+      
+      a = b;
+      
+    });
+
+  
     
+
+    this.todoService.getTodo(ofertaId);
+    console.log("interessado gotochat: "+ a);
     this.chatService.currentChatPairId = this.chatService.createPairId(
-      interessadoId,
-      prestadorId, ofertaId
+      this.userService.getCad(interessadoId),
+      this.todoService.getTodo(ofertaId), ofertaId
     );
     
     
@@ -84,6 +132,13 @@ export class MinhasMensagensPage implements OnInit {
   //     this.chatUser = res;
   //   });
   // }
+
+
+  avaliar(idContato, quem){
+    console.log(quem);
+    this.avaService.startAva(idContato, quem);
+    this.navCtrl.navigateForward('rating');
+  }
   
 
   

@@ -16,6 +16,9 @@ export class AvaserviceService {
 
   private avali: Observable<Ava[]>;
 
+  private idContato;
+  quem: any;
+
   constructor(db: AngularFirestore) {
     this.avaliCollection = db.collection<Ava>('avaliacao');
 
@@ -60,5 +63,11 @@ export class AvaserviceService {
  
   removeAva(id) {
     return this.avaliCollection.doc(id).delete();
+  }
+
+
+  startAva(idContato, quem){
+    this.idContato = idContato;
+    this.quem = quem;
   }
 }

@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 import { map, isEmpty } from 'rxjs/operators';
 
 export interface Chat {
+  id?: string;
   pair: string;
   interessadoId: string;
   prestadorId: string;
@@ -20,6 +21,7 @@ export interface Chat {
 } 
 
 export interface Message {
+  id?: string;
   message: string;
   pair: string;
   senderId: string;
@@ -119,42 +121,31 @@ export class ChatService {
     ).subscribe(snapshot => {
       if(snapshot.length == 0) {  
         console.log('Piar id match NOT found')
-        this.pairNotExist = true;
-        this.veio(true);
+        
+        // Se a conversa não existir o será criada uma pairnova
+
+        this.dadosChat = {
+          pair : pairId,
+          interessadoId : user1.uid,
+          prestadorId : ofertaData.iduser,
+          ofertaId : idOferta,
+          time : new Date().getTime()
+  
+        }
+        // Adcicionar no banco de dados 
+        this.chats.add(this.dadosChat);
       } else {
         console.log('Pair id match found for user' + snapshot[0].id )
-        this.pairNotExist = false;
-        this.veio(false);
+        
 
 
       }
     });
-    console.log(this.pairNotExist);
 
-
-    
-    if ( this.pairNotExist){
-
-      console.log("não existe")
-
-      this.dadosChat = {
-        pair : pairId,
-        interessadoId : user1.uid,
-        prestadorId : ofertaData.iduser,
-        ofertaId : idOferta,
-        time : new Date().getTime()
-
-      }
-
-      this.chats.add(this.dadosChat);
-    }
     
   }
 
-  veio(value){
-    console.log("veio");
-    this.pairNotExist = value;
-  }
+
 
   createPairId(user1, ofertaData, idOferta) {
     
@@ -162,7 +153,7 @@ export class ChatService {
     this.interestedId = user1.uid;
     this.workerId = ofertaData.iduser;
     this.ofertId = idOferta;
-    
+    console.log("interessado user uid:"+user1.uid);
     if (firebase.auth().currentUser.uid == ofertaData.iduser){
 
       this.currentChatPartner = this.interestedId;
