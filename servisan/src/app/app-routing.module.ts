@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'cadastro-usuario/:id', loadChildren: './usuario/cadastro-usuario/cadastro-usuario.module#CadastroUsuarioPageModule' },
   { path: 'chats', loadChildren: './contato/chats/chats.module#ChatsPageModule' },
   { path: 'chatroom', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
-  { path: 'rating/:id', loadChildren: './avaliacao/rating/rating.module#RatingPageModule' },
+  { path: 'rating', loadChildren: './avaliacao/rating/rating.module#RatingPageModule' },
   { path: 'minhas_demandas', loadChildren: './demanda/minhas-demandas/minhas-demandas.module#MinhasDemandasPageModule' },
   { path: 'meus_servicos', loadChildren: './servico/meus-servicos/meus-servicos.module#MeusServicosPageModule' },
   { path: 'detalhe_demanda', loadChildren: './demanda/detalhe-demanda/detalhe-demanda.module#DetalheDemandaPageModule' },
