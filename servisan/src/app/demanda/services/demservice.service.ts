@@ -26,7 +26,7 @@ export class DemserviceService {
   private demsUser: Observable<Dem[]>
  
   constructor(private db: AngularFirestore) {
-    this.demsCollection = db.collection<Dem>('Demanda');
+    this.demsCollection = db.collection<Dem>('demanda');
  
     this.dems = this.demsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -56,7 +56,7 @@ export class DemserviceService {
 
   getDemandasUser(){
 
-    this.colletionDemandaUser = this.db.collection<Dem>('Demanda', ref => ref.where('iduser', '==', firebase.auth().currentUser.uid));
+    this.colletionDemandaUser = this.db.collection<Dem>('demanda', ref => ref.where('iduser', '==', firebase.auth().currentUser.uid));
     this.demsUser = this.colletionDemandaUser.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

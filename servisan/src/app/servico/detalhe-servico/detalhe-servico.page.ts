@@ -70,7 +70,7 @@ export class DetalheServicoPage implements OnInit {
     
     this.chatService.currentChatPairId = this.chatService.createPairId(
       firebase.auth().currentUser,
-      ofertaData, idOferta
+      ofertaData, idOferta, "servico"
     );
     
     
