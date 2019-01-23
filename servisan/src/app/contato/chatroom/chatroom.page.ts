@@ -110,6 +110,9 @@ export class ChatroomPage implements OnInit {
   } //addChat
 
   isChatPartner(id) {
-    return id == this.chatpartner.id;
+    console.log("id da cor: "+ id);
+    console.log("Verdade: "+ (id == this.chatpartner))
+
+    return id == this.chatpartner;
   } //isChatPartner
 }

@@ -10,7 +10,8 @@ import { Todo } from 'src/app/servico/services/todo.service';
 import { Dem } from 'src/app/demanda/services/demservice.service';
 import * as firebase from 'firebase';
 import { NavController } from '@ionic/angular';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-minhas-mensagens',
@@ -32,9 +33,13 @@ export class MinhasMensagensPage implements OnInit {
 
   todoId: any;
   route: any;
+
   
   prestador = "prestador";
   contratante = "contratante";
+  dataUser: firebase.firestore.DocumentData;
+  dataOferta: firebase.firestore.DocumentData;
+  
 
   
 
@@ -42,10 +47,11 @@ export class MinhasMensagensPage implements OnInit {
     private chatService: ChatService, 
     private todoService: TodoService,
     private userService: CadService,
-    private db: AngularFirestore, 
+    private db: AngularFirestore,
     private navCtrl: NavController,
     private af: AngularFireDatabase,
-    private avaService: AvaserviceService) {     
+    private avaService: AvaserviceService,
+    private afs: AngularFirestore) {     
   }
     
     
@@ -94,38 +100,85 @@ export class MinhasMensagensPage implements OnInit {
 
   }
 // item.interessadoId, item.prestadorId, item.ofertaId
-  goToChat(interessadoId, prestadorId, ofertaId) {
-
-    var a: Cad[];
-
-    console.log("interessado id: "+ interessadoId);
-
-    this.db
-    .collection<Cad>("cadastro", res => {
-      return res.where("iduser", "==", interessadoId);
-    })
-    .valueChanges()
-    .subscribe(b => {
-      
-      a = b;
-      
-    });
+  goToChat(interessadoId, prestadorId, ofertaId, tipoOferta) {
 
   
-    
 
-    this.todoService.getTodo(ofertaId);
-    console.log("interessado gotochat: "+ a);
-    this.chatService.currentChatPairId = this.chatService.createPairId(
-      this.userService.getCad(interessadoId),
-      this.todoService.getTodo(ofertaId), ofertaId
-    );
-    
-    
+    let userDoc = this.afs.collection("cadastro", res => {
+      return res.where("iduser", "==", interessadoId);
+    });
+    userDoc.get().forEach((querySnapshot) => { 
+      querySnapshot.forEach((doc) => {
+        this.dataUser = doc.data();  
+        console.log("dataUser"+this.dataUser.iduser); 
 
-    this.navCtrl.navigateForward('chatroom');
+        // console.log(doc.id, "=>", doc.data().iduser); 
+
+        this.passandoDadosChat(this.dataUser, ofertaId, tipoOferta);
+
+
+
+      })//end querySnapshot
+    })//end foreach
+
 
   } //goToChat
+
+  passandoDadosChat(dataUser, ofertaId, tipoOferta){
+    // Pegando documento do serviço 
+    if (tipoOferta == "servico"){
+      console.log("servico")
+      let ofertaDoc = this.afs.collection("servico", res => {
+        return res.where(firebase.firestore.FieldPath.documentId(), "==", ofertaId);
+      });
+      ofertaDoc.get().forEach((querySnapshot) => { 
+        querySnapshot.forEach((doc) => {
+          this.dataOferta = doc.data(); 
+          console.log("dataUser"+dataUser); 
+
+          console.log("dataOferta"+this.dataOferta); 
+
+
+          // checando pair id para o servico
+          this.chatService.currentChatPairId = this.chatService.createPairId(
+            dataUser,
+            this.dataOferta, ofertaId, tipoOferta
+          );
+          
+          this.navCtrl.navigateForward('chatroom'); 
+        })
+      })
+
+      
+    }// fim do if
+    // pegando dado da demanda 
+    else{
+      console.log("demanda")
+
+      let ofertaDoc = this.afs.collection("demanda", res => {
+        return res.where("id", "==", ofertaId);
+      });
+      ofertaDoc.get().forEach((querySnapshot) => { 
+        querySnapshot.forEach((doc) => {
+          this.dataOferta = doc.data(); 
+
+          console.log("dataUser"+dataUser); 
+
+          console.log("dataOferta"+this.dataOferta); 
+          // checando paid id para demanda  
+          this.chatService.currentChatPairId = this.chatService.createPairId(
+            dataUser,
+            this.dataOferta, ofertaId, tipoOferta
+          );
+          this.navCtrl.navigateForward('chatroom'); 
+        })
+      })
+      
+    }// fim do else
+
+      
+  }
+    
 
   // atualizar(){
   //   this.chatService.getChatUser().subscribe(res => {

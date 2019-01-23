@@ -13,6 +13,7 @@ export interface Chat {
   pair: string;
   interessadoId: string;
   prestadorId: string;
+  tipoOferta: String;
   ofertaId: string;
   
   
@@ -94,7 +95,7 @@ export class ChatService {
   getOfertaId(){
     return this.ofertId;
   }
-  createChat(user1, ofertaData, idOferta, pairId){
+  createChat(user1, ofertaData, idOferta, pairId, tipoOfert){
 
     // console.log(user1);
     // console.log(ofertaData.iduser);
@@ -129,6 +130,7 @@ export class ChatService {
           interessadoId : user1.uid,
           prestadorId : ofertaData.iduser,
           ofertaId : idOferta,
+          tipoOferta: tipoOfert,
           time : new Date().getTime()
   
         }
@@ -147,28 +149,67 @@ export class ChatService {
 
 
 
-  createPairId(user1, ofertaData, idOferta) {
-    
-    let pairId;
-    this.interestedId = user1.uid;
-    this.workerId = ofertaData.iduser;
-    this.ofertId = idOferta;
-    console.log("interessado user uid:"+user1.uid);
-    if (firebase.auth().currentUser.uid == ofertaData.iduser){
+  createPairId(user1, ofertaData, idOferta, tipoOferta) {
+    if(user1.uid == undefined){
+      let pairId;
+      this.interestedId = user1.iduser;
+      this.workerId = ofertaData.iduser;
+      this.ofertId = idOferta;
+      
 
-      this.currentChatPartner = this.interestedId;
+      console.log("interessado user uid:"+user1.iduser);
+      console.log("ofertaData:"+ofertaData.iduser);      
+      console.log("ofertId:"+idOferta);
+      if (firebase.auth().currentUser.uid == this.interestedId){
 
-    }else{
-      this.currentChatPartner = firebase.auth().currentUser.uid;
+        this.currentChatPartner = this.workerId;
+
+      }else{
+        this.currentChatPartner = this.interestedId;
+      }
+
+      // pair id é formada pelo id do usuário que cadastrou 
+      // a oferta e id do usuario que está enviando e id da oferta
+      pairId = `${user1.iduser}|${ofertaData.iduser}|${idOferta}`;
+      
+      this.createChat(user1, ofertaData, idOferta, pairId, tipoOferta);
+
+      return pairId;
     }
 
-    // pair id é formada pelo id do usuário que cadastrou 
-    // a oferta e id do usuario que está enviando e id da oferta
-    pairId = `${user1.uid}|${ofertaData.iduser}|${idOferta}`;
-    
-    this.createChat(user1, ofertaData, idOferta, pairId);
 
-    return pairId;
+
+
+
+
+
+
+
+    else{
+      let pairId;
+      this.interestedId = user1.uid;
+      this.workerId = ofertaData.iduser;
+      this.ofertId = idOferta;
+      console.log("interessado user uid:"+user1.iduser);
+      console.log("ofertaData:"+ofertaData.iduser);      
+      console.log("ofertId:"+idOferta)
+      if (firebase.auth().currentUser.uid == ofertaData.iduser){
+
+        this.currentChatPartner = this.interestedId;
+
+      }else{
+        this.currentChatPartner = firebase.auth().currentUser.uid;
+      }
+
+      // pair id é formada pelo id do usuário que cadastrou 
+      // a oferta e id do usuario que está enviando e id da oferta
+      pairId = `${user1.uid}|${ofertaData.iduser}|${idOferta}`;
+      
+      this.createChat(user1, ofertaData, idOferta, pairId, tipoOferta);
+
+      return pairId;
+
+    }
   } //createPairString
 
 }

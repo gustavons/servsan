@@ -21,7 +21,7 @@
       </ng-container> -->
   
       <ion-item-sliding *ngFor="let item of chatUserInteressado">
-        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId)">
+        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId,item.tipoOferta)">
           
           <p>{{ item.id }}</p>
 
@@ -39,7 +39,7 @@
         
       
       <ion-item-sliding *ngFor="let item of chatUserContatado">
-        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId)">
+        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId, item.tipoOferta)">
           
           <p>{{ item.id }}</p>
 
