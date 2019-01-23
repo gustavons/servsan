@@ -28,7 +28,7 @@ export interface Cad {
    
     private cads: Observable<Cad[]>;
    
-    constructor(public fAuth: AngularFireAuth,db: AngularFirestore) {
+    constructor(public fAuth: AngularFireAuth, private db: AngularFirestore) {
       this.cadsCollection = db.collection<Cad>('cadastro');
    
       this.cads = this.cadsCollection.snapshotChanges().pipe(
@@ -48,6 +48,23 @@ export interface Cad {
    
     getCad(id) {
       return this.cadsCollection.doc<Cad>(id).valueChanges();
+    }
+
+    getCadAtualizado(id) {
+
+      var cadsCollection = this.db.collection<Cad>('cadastro');
+      var cads: Observable<Cad[]>;
+      cads = cadsCollection.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
+
+      return cadsCollection.doc<Cad>(id).valueChanges();
     }
    
     updateCad(cad: Cad, id: string) {
