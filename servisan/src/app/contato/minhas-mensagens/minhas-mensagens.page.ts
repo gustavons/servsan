@@ -187,9 +187,9 @@ export class MinhasMensagensPage implements OnInit {
   // }
 
 
-  avaliar(idContato, quem){
-    console.log(quem);
-    this.avaService.startAva(idContato, quem);
+  avaliar(idContato, dadocontato){
+    console.log( dadocontato);
+    this.avaService.startAva(idContato, dadocontato);
     this.navCtrl.navigateForward('rating');
   }
   

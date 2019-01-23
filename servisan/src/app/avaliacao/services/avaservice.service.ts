@@ -7,6 +7,11 @@ export interface Ava {
   id?: string;
   pontos: number;
   createdAt: number;
+  idavaliador: string;
+  idavaliado: string;
+  idoferta: string;
+  tipoferta: string;
+  idcontato: string;
 }
 
 @Injectable({
@@ -17,8 +22,8 @@ export class AvaserviceService {
 
   private avali: Observable<Ava[]>;
 
-  private idContato;
-  quem: any;
+  idContato;
+  dadocontato: any;
 
   constructor(db: AngularFirestore) {
     this.avaliCollection = db.collection<Ava>('avaliacao');
@@ -67,8 +72,8 @@ export class AvaserviceService {
   }
 
 
-  startAva(idContato, quem){
+  startAva(idContato, dadocontato){
     this.idContato = idContato;
-    this.quem = quem;
+    this.dadocontato = dadocontato;
   }
 }

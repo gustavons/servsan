@@ -55,11 +55,7 @@ export class AppComponent {
       url: '/meus_servicos',
       icon: 'build'
     },
-    {
-      title: 'Meus Contratos',
-      url: '/',
-      icon: 'filing'
-    },
+    
     {
       title: 'Sobre',
       url: '/sobre_dev',
