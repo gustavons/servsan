@@ -37,28 +37,27 @@ export class RatingPage {
     else this.stars.push("star-outline");
     }
   }
-  salvaravaliacao(avaliacao){
-    console.log(this.Avaservice.dadocontato)
+  salvaravaliacao(){
     var avaliadorId;
     var avaliadoId;
-    if(this.Avaservice.dadocontato.prestadorId == firebase.auth().currentUser.uid){
-      avaliadorId = this.Avaservice.dadocontato.prestadorId;
-      avaliadoId = this.Avaservice.dadocontato.interessadoId;
+    if(this.Avaservice.dadocontato[0].prestadorId == firebase.auth().currentUser.uid){
+      avaliadorId = this.Avaservice.dadocontato[0].prestadorId;
+      avaliadoId = this.Avaservice.dadocontato[0].interessadoId;
     }else{
       avaliadorId = firebase.auth().currentUser.uid;
-      avaliadoId = this.Avaservice.dadocontato.prestadorId;
+      avaliadoId = this.Avaservice.dadocontato[0].prestadorId;
     }
 
     this.ava = {
-      pontos: avaliacao,
+      pontos: this.value,
       createdAt: new Date().getTime(),
       idavaliador: avaliadorId,
       idavaliado: avaliadoId,
       idcontato: this.Avaservice.idContato,
-      idoferta: this.Avaservice.dadocontato.ofertaId,
-      tipoferta: this.Avaservice.dadocontato.tipoOferta,
+      idoferta: this.Avaservice.dadocontato[0].ofertaId,
+      tipoferta: this.Avaservice.dadocontato[0].tipoOferta,
     };
-    this.Avaservice.addAva(avaliacao)
+    this.Avaservice.addAva(this.ava)
   }
 
   starClicked(index){
