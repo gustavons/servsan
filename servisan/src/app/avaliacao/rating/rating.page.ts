@@ -11,7 +11,7 @@ import { NavController, LoadingController } from '@ionic/angular';
 })
 export class RatingPage {
   @Input() numStars: number = 5;
-  @Input() value: number = 2.5;
+  @Input() value: number = 1;
 
   @Output() ionClick: EventEmitter<number> = new EventEmitter<number>();
 
@@ -25,7 +25,7 @@ export class RatingPage {
     calc(){
     this.stars = []; 
     let tmp = this.value;
-    for (let i=0; i < this.numStars; i++, tmp--){
+    for (let i=-0; i < this.numStars; i++, tmp--){
       if(tmp >= 1)
       this.stars.push("star");
     else if(tmp > 0 && tmp < 1)

@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 export interface Ava {
   id?: string;
+  pontos: number;
   createdAt: number;
 }
 
