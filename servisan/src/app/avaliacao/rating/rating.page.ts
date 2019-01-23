@@ -38,6 +38,8 @@ export class RatingPage {
     console.log(index);
     this.value = index + 1;
     this.ionClick.emit(this.value);
+
+    console.log(this.ionClick)
     this.calc();
   }
 

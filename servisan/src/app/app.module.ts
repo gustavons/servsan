@@ -34,6 +34,7 @@ import { FcmService } from './notificacao/service/fcm.service';
     StatusBar,
     SplashScreen,
     Firebase,
+    StorageManager,
     FcmService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

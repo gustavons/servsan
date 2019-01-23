@@ -67,7 +67,7 @@ export class AppComponent {
     },
     {
       title: 'Sair',
-      url: '',
+      url: 'logout',
       icon: 'exit'
     },
   ];

@@ -53,6 +53,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.storage.get("cadastro").then(chatuser => {
+      console.log(chatuser)
       if (chatuser && chatuser.email !== "") {
         this.navCtrl.navigateForward("home");
       }
@@ -106,6 +107,13 @@ export class LoginPage implements OnInit {
       
   }
 
+logout(){
+  this.fAuth.auth.signOut
+  this.storage.remove("cadastro");
+  this.navCtrl.navigateForward('login');
+
+}
+ 
 
 
   // async login() {
