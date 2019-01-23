@@ -65,6 +65,11 @@ export class AppComponent {
       url: '/sobre_dev',
       icon: 'people'
     },
+    {
+      title: 'Sair',
+      url: '',
+      icon: 'exit'
+    },
   ];
 
 
