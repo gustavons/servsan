@@ -62,12 +62,12 @@ async saveCad() {
   if (this.cadId) {
     this.cadService.updateCad(this.cad, this.cadId).then(() => {
       loading.dismiss();
-      this.nav.navigateBack("\home", true);
+      this.nav.navigateBack("\login", true);
     });
   } else {
     this.cadService.addCad(this.cad).then(() => {
       loading.dismiss();
-      this.nav.navigateBack("\home", true);
+      this.nav.navigateBack("\login", true);
     });
   }
 }

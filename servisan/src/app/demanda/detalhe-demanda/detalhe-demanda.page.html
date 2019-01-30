@@ -13,15 +13,15 @@
 
   <ion-list lines="full">
     <ion-item class="item-thumbnail-left">
-        <h1>Descrição:   </h1>
+        <p >Descrição:   </p>
         
-        <p>{{dems.descricao}}</p>
+        <p >{{dem.descricao}}</p>
     </ion-item>
     
-    <!-- Ainda falta fazer o carregamento de fotos -->
+    <!-- Ainda falta fazer o carregamento de fotos
     <ion-item class="item-thumbnail-left" id="oferecerServiOs-list-item24">
       <h2>FOTO</h2>
-    </ion-item>
+    </ion-item> -->
   </ion-list>
-  <ion-button routerLink="/entrar_contato" class="button button-positive button-block">Entrar em contato</ion-button>
+  <ion-button (click)="goToChat(dem, demId)"  class="button button-positive button-block">Entrar em contato</ion-button>
 </ion-content>

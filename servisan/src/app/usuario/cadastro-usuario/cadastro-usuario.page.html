@@ -11,61 +11,69 @@
 
 
 <ion-content padding="true" class="has-header">
-  <label class="item item-input" id="cadastro-nome">
-    <span class="input-label">Nome Completo</span>
-    <ion-item>
-      <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.nome"></ion-input>
-    </ion-item>    
-  </label>
-  <label class="item item-input" id="cadastro-nasci">
-    <span class="input-label">Data de Nascimento</span>
-    <ion-item>
-      <ion-input required type="date" placeholder="Data de Nascimento " [(ngModel)]="cad.nasci"></ion-input>
-    </ion-item> 
-  </label>
-  <label class="item item-input" id="cadastro-cpf">
-    <span class="input-label">CPF</span>
-    <ion-item>
-      <ion-input required type="text" placeholder="CPF" [(ngModel)]="cad.cpf"></ion-input>
-    </ion-item> 
-  </label>
-  <label class="item item-input" id="cadastro-celular">
-    <span class="input-label">Número do celular</span>
-    <ion-item>
-      <ion-input required type="text" placeholder="Número do celular" [(ngModel)]="cad.cel"></ion-input>
-    </ion-item> 
-  </label>
-  <label class="item item-input" id="cadastro-endereco">
-    <span class="input-label">Endereço</span>
-    <ion-item>
-      <ion-input required type="text" placeholder="endereço" [(ngModel)]="cad.endereco"></ion-input>
-    </ion-item>
-  </label>
-  <label class="item item-input" id="cadastro-cep">
-    <span class="input-label">Cep</span>
-    <ion-item>
-      <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.cep"></ion-input>
-    </ion-item>
-  </label>
-  <label class="item item-input" id="cadastro-email">
-    <span class="input-label">E-mail</span>
-    <ion-item>
-      <ion-input required type="email" placeholder="Email" [(ngModel)]="cad.email"></ion-input>
-    </ion-item>
-  </label>
-  <label class="item item-input" id="cadastro-senha">
-    <span class="input-label">Senha </span>
-    <ion-item>
-      <ion-input required type="password" placeholder="Senha" [(ngModel)]="cad.senha"></ion-input>
-    </ion-item>
-  </label>
-  <label class="item item-input" id="cadastro-confsenha">
-    <span class="input-label">Confirmar senha</span>
-    <ion-item>
-      <ion-input required type="password" placeholder="Confirmar Senha" ></ion-input>
-    </ion-item>
-  </label>
 
-  <ion-button expand="full" (click)="saveCad()" routerLink="/cadastro_usuario">Salvar</ion-button>
- 
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        
+        <div padding>
+          <ion-item>
+              <ion-input required type="text" placeholder="Nome" [(ngModel)]="cad.nome"></ion-input>
+          </ion-item>    
+          <ion-item>
+            <ion-input required type="date" placeholder="Data de Nascimento " [(ngModel)]="cad.nasci"></ion-input>
+          </ion-item> 
+            
+          <ion-item>
+            <ion-input required type="text" placeholder="CPF" [(ngModel)]="cad.cpf"></ion-input>
+          </ion-item> 
+          
+          
+            
+          <ion-item>
+            <ion-input required type="text" placeholder="Número do celular" [(ngModel)]="cad.cel"></ion-input>
+          </ion-item> 
+        
+        
+          
+          <ion-item>
+            <ion-input required type="text" placeholder="endereço" [(ngModel)]="cad.endereco"></ion-input>
+          </ion-item>
+        
+        
+          
+          <ion-item>
+            <ion-input required type="text" placeholder="CEP" [(ngModel)]="cad.cep"></ion-input>
+          </ion-item>
+        
+        
+          
+          <ion-item>
+            <ion-input required type="email" placeholder="Email" [(ngModel)]="cad.email"></ion-input>
+          </ion-item>
+        
+        
+          
+          <ion-item>
+              <ion-input required type="password" placeholder="Senha" [(ngModel)]="cad.senha"></ion-input>
+          </ion-item>
+        
+        
+          
+          <ion-item>
+            <ion-input required type="password" placeholder="Confirmar Senha" ></ion-input>
+          </ion-item>
+
+        </div>
+  
+        <div padding>
+          <ion-button expand="full" (click)="saveCad()" routerLink="/cadastro-usuario">Salvar</ion-button>
+
+        </div>
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

@@ -22,8 +22,8 @@
     </ng-container> -->
 
     <ion-item *ngFor="let user of demandas">
-      <!-- <ion-item lines="inset" button [routerLink]="['/alterar-demanda', user.id]"> -->
-      <ion-item lines="inset" button >
+      <ion-item lines="inset" button [routerLink]="['/detalhe_demanda', user.id]">
+      <!-- <ion-item lines="inset" button > -->
 
         <ion-label>
           {{ user.descricao }}

@@ -21,14 +21,23 @@
       </ng-container> -->
   
       <ion-item-sliding *ngFor="let item of chatUserInteressado">
-        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId,item.tipoOferta)">
-          
-          <p>{{ item.id }}</p>
 
+        <ion-row>
+            <ion-col size="7" >
+                <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId,item.tipoOferta)">
           
-            
-        </ion-item>
-        <button  (click)="avaliar(item.id, chatUserInteressado)"> Avaliar</button>
+                    <!-- <p>{{ item.id }}</p> -->
+                    <p>Conversa - </p>
+                    <p>{{item.tipoOferta}}</p>
+                      
+                </ion-item>
+            </ion-col>
+            <ion-col size="2" >
+                <ion-button  (click)="avaliar(item.id, chatUserInteressado)"> Avaliar</ion-button>
+
+            </ion-col>
+        </ion-row>
+        
         
         
       </ion-item-sliding>
@@ -39,13 +48,24 @@
         
       
       <ion-item-sliding *ngFor="let item of chatUserContatado">
-        <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId, item.tipoOferta)">
-          
-          <p>{{ item.id }}</p>
 
+          <ion-row>
+              <ion-col size="8" >
+                  <ion-item lines="inset" button (click)="goToChat(item.interessadoId, item.prestadorId, item.ofertaId, item.tipoOferta)">
             
-        </ion-item>
-        <button  (click)="avaliar(item.id,chatUserContatado)"> Avaliar</button>
+                      <!-- <p>{{ item.id }}</p> -->
+                      <p>Conversa - </p>
+                      <p>{{item.tipoOferta}}</p>
+                      
+                        
+                  </ion-item>
+              </ion-col>
+              <ion-col size="2" >
+                  <button  (click)="avaliar(item.id,chatUserContatado)"> Avaliar</button>
+  
+              </ion-col>
+          </ion-row>
+        
         
       </ion-item-sliding>
     </ion-list>

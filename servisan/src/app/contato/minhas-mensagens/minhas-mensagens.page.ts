@@ -154,22 +154,23 @@ export class MinhasMensagensPage implements OnInit {
     // pegando dado da demanda 
     else{
       console.log("demanda")
-
       let ofertaDoc = this.afs.collection("demanda", res => {
-        return res.where("id", "==", ofertaId);
+        return res.where(firebase.firestore.FieldPath.documentId(), "==", ofertaId);
       });
       ofertaDoc.get().forEach((querySnapshot) => { 
         querySnapshot.forEach((doc) => {
           this.dataOferta = doc.data(); 
-
           console.log("dataUser"+dataUser); 
 
           console.log("dataOferta"+this.dataOferta); 
-          // checando paid id para demanda  
+
+
+          // checando pair id para o servico
           this.chatService.currentChatPairId = this.chatService.createPairId(
             dataUser,
             this.dataOferta, ofertaId, tipoOferta
           );
+          
           this.navCtrl.navigateForward('chatroom'); 
         })
       })

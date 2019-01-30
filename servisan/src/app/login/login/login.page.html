@@ -1,37 +1,42 @@
 
 <ion-header>
-  <ion-toolbar class = 'login' color="primary">
+  <!-- <ion-toolbar class = 'login' color="primary">
     <ion-title>
       Login
     </ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 
 <ion-content padding id="signInPage">
-  <h3>Entrar</h3>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <img src="../../../assets/logo.png"  width="150" height="150" alt="logo">
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-input type="email" placeholder="Email" [(ngModel)]="loginForm.email"></ion-input>
 
-  <div id="signInForm">
-    <ion-list>
+          </ion-item>
+  
+          <ion-item>
+            <ion-input type="password" placeholder="Senha" [(ngModel)]="loginForm.password"></ion-input>
 
-      <ion-item>
-        <ion-label floating>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="loginForm.email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="loginForm.password"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <button ion-button center large block (click)="loginUser()">Entrar</button>
-      </ion-item>
-
-      <ion-item>
-          <button ion-button center large block routerLink="/cadastro-usuario">Novo Usuário</button>
-      </ion-item>
-
-    </ion-list>
-  </div>
+          </ion-item>
+        </div>
+  
+        <div padding>
+          <ion-button size="large" (click)="loginUser()" expand="block">Entrar</ion-button>
+        </div>
+        <div padding>
+          <a expand="block" routerLink="/cadastro-usuario">Novo Usuário</a>
+          <!-- <a ion-button center large block routerLink="/cadastro-usuario">Novo Usuário</button> -->
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 
 
 

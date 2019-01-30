@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
     this.storage.get("cadastro").then(chatuser => {
       console.log(chatuser)
       if (chatuser && chatuser.email !== "") {
-        this.navCtrl.navigateForward("home");
+        // this.navCtrl.navigateForward("home");
       }
     });
   }

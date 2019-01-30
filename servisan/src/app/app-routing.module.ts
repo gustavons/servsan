@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'rating', loadChildren: './avaliacao/rating/rating.module#RatingPageModule' },
   { path: 'minhas_demandas', loadChildren: './demanda/minhas-demandas/minhas-demandas.module#MinhasDemandasPageModule' },
   { path: 'meus_servicos', loadChildren: './servico/meus-servicos/meus-servicos.module#MeusServicosPageModule' },
-  { path: 'detalhe_demanda', loadChildren: './demanda/detalhe-demanda/detalhe-demanda.module#DetalheDemandaPageModule' },
+  { path: 'detalhe_demanda/:id', loadChildren: './demanda/detalhe-demanda/detalhe-demanda.module#DetalheDemandaPageModule' },
   { path: 'sobre_dev', loadChildren: './sobre/sobre-dev/sobre-dev.module#SobreDevPageModule' },
   { path: 'minhas_mensagens', loadChildren: './contato/minhas-mensagens/minhas-mensagens.module#MinhasMensagensPageModule' },
   { path: 'chatroom/:id', loadChildren: './contato/chatroom/chatroom.module#ChatroomPageModule' },
